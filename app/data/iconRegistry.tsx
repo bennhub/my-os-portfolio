@@ -82,7 +82,7 @@ export const desktopAppIcons: IconDefinition[] = [
   },
   {
     id: 'app-groove-slider',
-    label: 'Groove Slider',
+    label: 'Hayzer Apps',
     icon: <SlidersHorizontal className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-amber-500 text-slate-950'
   },
