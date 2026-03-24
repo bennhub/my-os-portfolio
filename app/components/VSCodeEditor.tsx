@@ -39,7 +39,7 @@ interface CompletedExercises {
 
 const CodePracticeApp: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("javascript");
-  const [tutorials, setTutorials] = useState<TutorialData>({
+  const [tutorials] = useState<TutorialData>({
     basics: {
       title: "Programming Basics",
       description: "Learn the fundamentals of programming",
@@ -148,7 +148,7 @@ const CodePracticeApp: React.FC = () => {
     try {
       let output = "";
       const console = {
-        log: (...args: any[]) => {
+        log: (...args: unknown[]) => {
           output += args.join(" ") + "\n";
         }
       };

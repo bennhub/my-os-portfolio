@@ -16,7 +16,7 @@ export default function AutomationLab() {
               Automation Lab
             </p>
             <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">
-              Ben's QA tools and workflow demos
+              Ben&apos;s QA tools and workflow demos
             </h2>
             <p className="max-w-3xl text-sm text-slate-600 dark:text-slate-300">
               This window is for hands-on automation projects, command surfaces, and test tooling demos.
