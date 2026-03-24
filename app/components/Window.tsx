@@ -22,13 +22,15 @@ export default function Window({ id, title, children, onClose, onPositionChange 
   const [isResizing, setIsResizing] = useState(false);
   const [resizeOffset, setResizeOffset] = useState({ x: 0, y: 0 });
   const [isMobile, setIsMobile] = useState(false);
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+  const [initialViewportHeight, setInitialViewportHeight] = useState(0);
 
   const windowRef = useRef<HTMLDivElement>(null);
 
   const clampPosition = useCallback((nextX: number, nextY: number) => {
     const isMobileView = window.innerWidth <= 768;
     const menuBarHeight = isMobileView ? 44 : 32; // Mobile: 44px, Desktop: 32px
-    const dockHeight = isMobileView ? 100 : 80; // Larger dock height for mobile
+    const dockHeight = isMobileView ? (keyboardOpen ? 0 : 100) : 80; // No dock space when keyboard is open
     const maxX = Math.max(0, window.innerWidth - size.width);
     const maxY = Math.max(menuBarHeight, window.innerHeight - dockHeight - 10); // Extra margin
 
@@ -36,7 +38,7 @@ export default function Window({ id, title, children, onClose, onPositionChange 
       x: Math.min(Math.max(0, nextX), maxX),
       y: Math.min(Math.max(menuBarHeight, nextY), maxY),
     };
-  }, [size.width]);
+  }, [size.width, keyboardOpen]);
 
   const updateDeviceType = () => {
     const width = window.innerWidth;
@@ -98,6 +100,46 @@ export default function Window({ id, title, children, onClose, onPositionChange 
 
     return () => clearTimeout(timeout);
   }, [isMinimized, isMaximized]);
+
+  // Keyboard detection for mobile devices
+  useEffect(() => {
+    if (!isMobile) return;
+
+    setInitialViewportHeight(window.innerHeight);
+
+    const handleViewportChange = () => {
+      const currentHeight = window.innerHeight;
+      const heightDifference = initialViewportHeight - currentHeight;
+
+      // If viewport height decreased by more than 150px, assume keyboard is open
+      if (heightDifference > 150) {
+        setKeyboardOpen(true);
+        // Adjust window position to stay above keyboard
+        setPosition(prevPosition => {
+          const menuBarHeight = 44;
+          const availableSpace = currentHeight - menuBarHeight - 20; // 20px margin
+
+          return {
+            x: prevPosition.x,
+            y: Math.max(menuBarHeight, Math.min(prevPosition.y, availableSpace - size.height))
+          };
+        });
+      } else {
+        setKeyboardOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleViewportChange);
+    // Also listen for orientationchange which can help on some devices
+    window.addEventListener("orientationchange", () => {
+      setTimeout(handleViewportChange, 100);
+    });
+
+    return () => {
+      window.removeEventListener("resize", handleViewportChange);
+      window.removeEventListener("orientationchange", handleViewportChange);
+    };
+  }, [isMobile, initialViewportHeight, size.height]);
 
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {

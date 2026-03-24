@@ -50,8 +50,6 @@ const MenuBar: React.FC<MenuBarProps> = ({ switchWallpaper }) => {
     setIsWallpaperSelectorOpen(false); // Close the wallpaper selector after selection
   };
   const drawerRef = useRef<HTMLDivElement>(null);
-  const startY = useRef<number>(0);
-  const currentY = useRef<number>(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -61,32 +59,6 @@ const MenuBar: React.FC<MenuBarProps> = ({ switchWallpaper }) => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>): void => {
-    startY.current = e.touches[0].clientY;
-    currentY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>): void => {
-    currentY.current = e.touches[0].clientY;
-    const deltaY = currentY.current - startY.current;
-    
-    if (deltaY > 0 && deltaY < 300 && drawerRef.current) {
-      drawerRef.current.style.transform = `translateY(${deltaY}px)`;
-    }
-  };
-
-  const handleTouchEnd = (): void => {
-    const deltaY = currentY.current - startY.current;
-    if (!drawerRef.current) return;
-
-    if (deltaY > 50) {
-      setIsDrawerOpen(true);
-      drawerRef.current.style.transform = 'translateY(100%)';
-    } else {
-      setIsDrawerOpen(false);
-      drawerRef.current.style.transform = 'translateY(0)';
-    }
-  };
 
   const handleDrawerClose = (): void => {
     setIsDrawerOpen(false);
@@ -155,9 +127,6 @@ const MenuBar: React.FC<MenuBarProps> = ({ switchWallpaper }) => {
             ? "bg-gradient-to-br from-white/70 to-gray-100/70 text-black"
             : "bg-gradient-to-br from-gray-900/70 to-gray-800/70 text-white"
         } z-50 flex items-center justify-between px-3 sm:px-4 backdrop-blur-xl transition-colors duration-300`}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
       >
         <div className="flex items-center space-x-1.5 sm:space-x-2">
           <span className="hidden text-xs sm:text-sm md:block">{portfolio.name}</span>
