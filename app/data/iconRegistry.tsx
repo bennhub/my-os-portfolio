@@ -87,6 +87,12 @@ export const desktopAppIcons: IconDefinition[] = [
     badgeClassName: 'bg-amber-500 text-slate-950'
   },
   {
+    id: 'chopblock',
+    label: 'ChopBlock',
+    icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-purple-500 text-white'
+  },
+  {
     id: 'app-rec-fx',
     label: 'Rec FX',
     icon: <Radio className="h-5 w-5 sm:h-5 sm:w-5" />,
@@ -150,11 +156,19 @@ export const iconRegistry = combinedIcons.reduce<Record<string, IconDefinition>>
   return acc
 }, {})
 
-export const mobileIconOrder = combinedIcons.reduce<string[]>((acc, icon) => {
+// Filter out keyboard-requiring apps for mobile
+const mobileFilteredIcons = combinedIcons.filter(icon =>
+  !['terminal', 'vscode'].includes(icon.id)
+)
+
+export const mobileIconOrder = mobileFilteredIcons.reduce<string[]>((acc, icon) => {
   if (!acc.includes(icon.id)) {
     acc.push(icon.id)
   }
   return acc
 }, [])
 
-export const mobileDockDefaultIds = dockIcons.slice(0, 6).map((icon) => icon.id)
+export const mobileDockDefaultIds = dockIcons
+  .filter(icon => !['terminal', 'vscode'].includes(icon.id))
+  .slice(0, 6)
+  .map((icon) => icon.id)

@@ -264,27 +264,27 @@ export default function Window({ id, title, children, onClose, onPositionChange 
         />
         <div className="relative z-20 flex items-center space-x-2.5 sm:space-x-3">
           <button
-            className="flex h-5 w-5 items-center justify-center rounded-full bg-red-500 transition-colors hover:bg-red-600 sm:h-5 sm:w-5"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-red-500 transition-colors hover:bg-red-600 sm:h-5 sm:w-5"
             onPointerDown={stopHeaderAction}
             onClick={onClose}
           >
-            <X className="h-2.5 w-2.5 text-white sm:h-3 sm:w-3" />
+            <X className="h-3.5 w-3.5 text-white sm:h-3 sm:w-3" />
           </button>
 
           <button
-            className="flex h-5 w-5 items-center justify-center rounded-full bg-yellow-500 transition-colors hover:bg-yellow-600 sm:h-5 sm:w-5"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-yellow-500 transition-colors hover:bg-yellow-600 sm:h-5 sm:w-5"
             onPointerDown={stopHeaderAction}
             onClick={handleMinimize}
           >
-            <Minus className="h-2.5 w-2.5 text-white sm:h-3 sm:w-3" />
+            <Minus className="h-3.5 w-3.5 text-white sm:h-3 sm:w-3" />
           </button>
 
           <button
-            className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500 transition-colors hover:bg-green-600 sm:h-5 sm:w-5"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-green-500 transition-colors hover:bg-green-600 sm:h-5 sm:w-5"
             onPointerDown={stopHeaderAction}
             onClick={handleMaximize}
           >
-            <Square className="h-2.5 w-2.5 text-white sm:h-3 sm:w-3" />
+            <Square className="h-3.5 w-3.5 text-white sm:h-3 sm:w-3" />
           </button>
         </div>
         <div className="pointer-events-none relative z-20 px-4 text-xs text-gray-600 truncate dark:text-gray-300 sm:text-sm">

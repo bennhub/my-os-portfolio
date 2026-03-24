@@ -343,6 +343,11 @@ export default function Home() {
       title: "Media Showcase",
       content: <MediaShowcase />,
     },
+    chopblock: {
+      id: "chopblock",
+      title: "ChopBlock",
+      content: <AppEmbed title="ChopBlock" url="https://chopblock.hayzer.app/" description="Audio chopping and beat making tool" />,
+    },
     ...audioAppWindows,
   };
 
