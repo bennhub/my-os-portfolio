@@ -58,19 +58,19 @@ export const desktopPrimaryIcons: IconDefinition[] = [
 export const desktopAppIcons: IconDefinition[] = [
   {
     id: 'vscode',
-    label: 'VS Code',
+    label: 'Code Practice',
     icon: <Code className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-blue-500 text-white'
   },
   {
     id: 'browser',
-    label: 'Browser',
+    label: 'Agent',
     icon: <Globe className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-cyan-500 text-white'
   },
   {
     id: 'automation',
-    label: 'Automation Lab',
+    label: 'Automation Projects',
     icon: <Bug className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-lime-500 text-slate-950'
   },

@@ -16,7 +16,7 @@ export default function AutomationLab() {
               Automation Lab
             </p>
             <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100">
-              QA tooling and workflow demos
+              Ben's QA tools and workflow demos
             </h2>
             <p className="max-w-3xl text-sm text-slate-600 dark:text-slate-300">
               This window is for hands-on automation projects, command surfaces, and test tooling demos.
@@ -99,7 +99,7 @@ export default function AutomationLab() {
 
             <div className="relative min-h-0 flex-1 bg-[#0b0f14]">
               <Image
-                src="/Projects/playwrite command ctner.gif"
+                src="/Projects/playwrite command center.gif"
                 alt="Playwright Command Center demo"
                 fill
                 priority

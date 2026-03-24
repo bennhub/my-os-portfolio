@@ -10,7 +10,6 @@ import CodePracticeApp from "./components/VSCodeEditor";
 import GeminiChat from "./components/BrowserWindow";
 import Terminal from "./components/Terminal";
 import ResumeWindow from "./components/ResumeWindow";
-import wallpaper from "@/public/wallpaper3.jpg";
 import ProfileCard from "./components/AboutMe";
 import ConnectWithMe from "./components/Social";
 import Projects from "./components/Project";
@@ -21,6 +20,7 @@ import MediaShowcase from "./components/MediaShowcase";
 import AppEmbed from "./components/AppEmbed";
 import { portfolio } from "./data/portfolio";
 import { iconRegistry, mobileDockDefaultIds, mobileIconOrder } from "./data/iconRegistry";
+import wallpaper from "@/public/wallpaper1.png";
 
 interface WindowConfig {
   id: string;

@@ -1,13 +1,12 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import wallpaper1 from "@/public/wallpaper1.png";
-import wallpaper2 from "@/public/wallpaper2.png";
-import wallpaper3 from "@/public/wallpaper3.png";
+import wallpaper2 from "@/public/wallpaper2.jpg";
 import wallpaper4 from "@/public/wallpaper4.jpg";
 import wallpaper5 from "@/public/wallpaper5.jpg";
 import wallpaper7 from "@/public/wallpaper7.png";
 import wallpaper8 from "@/public/wallpaper8.jpg";
-import wallpaper9 from "@/public/wallpaper9.png";
+import wallpaper9 from "@/public/wallpaper9.jpg";
 import wallpaper10 from "@/public/wallpaper10.jpg";
 
 interface WallpaperSelectorProps {
@@ -18,7 +17,6 @@ interface WallpaperSelectorProps {
 const wallpapers = [
   { id: 1, src: wallpaper1.src, alt: "Stars above Squamish | Ben N." },
   { id: 2, src: wallpaper2.src, alt: "3rd Beach | Ben N." },
-  { id: 3, src: wallpaper3.src, alt: "Sunset Beach Vancouver | Ben N" },
   { id: 4, src: wallpaper4.src, alt: "Ventura Wallpaper" },
   { id: 5, src: wallpaper5.src, alt: "Sequria Wallpaper" },
   { id: 6, src: wallpaper7.src, alt: "Van Sunset | Ben.N" },
