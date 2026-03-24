@@ -88,6 +88,24 @@ export default function Window({ id, title, children, onClose, onPositionChange 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Auto-maximize on mobile/tablet for app-like experience
+  useEffect(() => {
+    const isMobileOrTablet = window.innerWidth <= 768;
+    if (isMobileOrTablet && !isMaximized && !isMinimized) {
+      // Small delay to ensure window is properly initialized
+      const timer = setTimeout(() => {
+        const menuBarHeight = 44; // Mobile menu bar height
+        setPosition({ x: 0, y: menuBarHeight });
+        setSize({
+          width: window.innerWidth,
+          height: window.innerHeight - menuBarHeight,
+        });
+        setIsMaximized(true);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile, isMaximized, isMinimized]); // Run when mobile state or maximize/minimize state changes
+
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (isMinimized) {
