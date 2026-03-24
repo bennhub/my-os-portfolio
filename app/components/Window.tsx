@@ -26,12 +26,15 @@ export default function Window({ id, title, children, onClose, onPositionChange 
   const windowRef = useRef<HTMLDivElement>(null);
 
   const clampPosition = useCallback((nextX: number, nextY: number) => {
+    const isMobileView = window.innerWidth <= 768;
+    const menuBarHeight = isMobileView ? 44 : 32; // Mobile: 44px, Desktop: 32px
+    const dockHeight = isMobileView ? 100 : 80; // Larger dock height for mobile
     const maxX = Math.max(0, window.innerWidth - size.width);
-    const maxY = Math.max(MENU_BAR_HEIGHT, window.innerHeight - 80);
+    const maxY = Math.max(menuBarHeight, window.innerHeight - dockHeight - 10); // Extra margin
 
     return {
       x: Math.min(Math.max(0, nextX), maxX),
-      y: Math.min(Math.max(MENU_BAR_HEIGHT, nextY), maxY),
+      y: Math.min(Math.max(menuBarHeight, nextY), maxY),
     };
   }, [size.width]);
 
@@ -40,11 +43,17 @@ export default function Window({ id, title, children, onClose, onPositionChange 
     setIsMobile(width <= 768);
 
     if (width <= 480) {
-      setSize({ width: width * 0.95, height: window.innerHeight * 0.8 });
-      setPosition({ x: width * 0.025, y: 40 });
+      const menuBarHeight = 44;
+      const dockHeight = 100; // Approximate mobile dock height
+      const availableHeight = window.innerHeight - menuBarHeight - dockHeight - 20; // 20px margins
+      setSize({ width: width * 0.95, height: Math.min(availableHeight, window.innerHeight * 0.75) });
+      setPosition({ x: width * 0.025, y: 54 }); // 44px menu bar + 10px spacing
     } else if (width <= 768) {
-      setSize({ width: width * 0.9, height: window.innerHeight * 0.7 });
-      setPosition({ x: width * 0.05, y: 50 });
+      const menuBarHeight = 44;
+      const dockHeight = 90; // Approximate tablet dock height
+      const availableHeight = window.innerHeight - menuBarHeight - dockHeight - 20; // 20px margins
+      setSize({ width: width * 0.9, height: Math.min(availableHeight, window.innerHeight * 0.65) });
+      setPosition({ x: width * 0.05, y: 54 }); // 44px menu bar + 10px spacing
     } else if (width <= 1024) {
       setSize({ width: 700, height: 500 });
       setPosition({ x: 50, y: 60 });

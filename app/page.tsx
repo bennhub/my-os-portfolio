@@ -132,23 +132,37 @@ export default function Home() {
 
   // Check for dock collision
   useEffect(() => {
-    const COLLISION_THRESHOLD = 120; // Show dock when windows are this close to bottom
+    const isMobileDevice = window.innerWidth <= 768;
+    const COLLISION_THRESHOLD = isMobileDevice ? 200 : 120; // Larger threshold for mobile
 
     const hasCollision = Object.values(windowPositions).some(window =>
       window.bottom <= COLLISION_THRESHOLD
     );
 
+    // On mobile, be more aggressive - hide dock when any window is open
+    const shouldHideDock = isMobileDevice ?
+      (hasCollision || Object.keys(windowPositions).length > 0) :
+      hasCollision;
+
     // Only auto-hide if there's a collision and dock isn't overridden
-    setIsDockHidden(hasCollision && !isDockOverridden);
+    setIsDockHidden(shouldHideDock && !isDockOverridden);
   }, [windowPositions, isDockOverridden]);
 
   // Reset override when no more collisions
   useEffect(() => {
+    const isMobileDevice = window.innerWidth <= 768;
+    const COLLISION_THRESHOLD = isMobileDevice ? 200 : 120;
+
     const hasCollision = Object.values(windowPositions).some(window =>
-      window.bottom <= 120
+      window.bottom <= COLLISION_THRESHOLD
     );
 
-    if (!hasCollision) {
+    // On mobile, reset override only when no windows are open
+    const shouldResetOverride = isMobileDevice ?
+      Object.keys(windowPositions).length === 0 :
+      !hasCollision;
+
+    if (shouldResetOverride) {
       setIsDockOverridden(false);
     }
   }, [windowPositions]);
