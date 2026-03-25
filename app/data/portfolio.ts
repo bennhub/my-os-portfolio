@@ -206,9 +206,9 @@ export const portfolio = {
     apps: [
       {
         id: "app-groove-slider",
-        title: "Groove Slider",
+        title: "Hayzer Apps",
         description:
-          "A slideshow app that syncs music with images and video content.",
+          "My Apps on a landing page.",
         url: "https://hayzer.app/",
       },
       {
@@ -229,7 +229,7 @@ export const portfolio = {
         id: "app-audioblaster",
         title: "Beat Block Audio Player",
         description:
-          "A retro-styled audio player with playlist support and social sharing features.",
+          "A chunky audio player with playlist & sharing support",
         url: "https://bennhub.github.io/block-beat-audio-player/",
       },
     ],
