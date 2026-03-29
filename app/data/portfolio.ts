@@ -232,6 +232,20 @@ export const portfolio = {
           "A chunky audio player with playlist & sharing support",
         url: "https://bennhub.github.io/block-beat-audio-player/",
       },
+      {
+        id: "app-audio-paint",
+        title: "Audio Paint",
+        description:
+          "Interactive audio-visual painting with sound synthesis",
+        url: "https://bennhub.github.io/audio-paint/",
+      },
+      {
+        id: "app-jazz-guitar",
+        title: "Jazz Guitar Progressions",
+        description:
+          "Interactive jazz guitar chord progression learning tool",
+        url: "https://bennhub.github.io/jazz-guitar-progression-app/",
+      },
     ],
   },
   automation: {

@@ -103,6 +103,18 @@ export const desktopAppIcons: IconDefinition[] = [
     label: 'Beat Block Player',
     icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-cyan-500 text-white'
+  },
+  {
+    id: 'app-audio-paint',
+    label: 'Audio Paint',
+    icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-indigo-500 text-white'
+  },
+  {
+    id: 'app-jazz-guitar',
+    label: 'Jazz Guitar',
+    icon: <Radio className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-emerald-600 text-white'
   }
 ]
 
