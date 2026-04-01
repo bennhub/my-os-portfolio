@@ -234,10 +234,10 @@ export const portfolio = {
       },
       {
         id: "app-audio-paint",
-        title: "Audio Paint",
+        title: "Beat Brush",
         description:
           "Interactive audio-visual painting with sound synthesis",
-        url: "https://bennhub.github.io/audio-paint/",
+        url: "https://beatbrush.hayzer.app/",
       },
       {
         id: "app-jazz-guitar",

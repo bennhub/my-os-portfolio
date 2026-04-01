@@ -106,7 +106,7 @@ export const desktopAppIcons: IconDefinition[] = [
   },
   {
     id: 'app-audio-paint',
-    label: 'Audio Paint',
+    label: 'Beat Brush',
     icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-indigo-500 text-white'
   },
