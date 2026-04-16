@@ -74,7 +74,7 @@ export default function Desktop({
       </div>
 
       <div
-        className="absolute inset-x-0 bottom-[39%] flex justify-center px-3 sm:hidden"
+        className="absolute inset-x-0 bottom-[35%] flex justify-center px-3 sm:hidden"
         data-mobile-dropzone="desktop"
       >
         <div className="grid grid-cols-5 gap-x-3 gap-y-4 rounded-3xl px-2 py-3">
