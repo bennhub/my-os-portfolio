@@ -4,6 +4,7 @@ import { portfolio } from '../data/portfolio'
 
 interface DesktopProps {
   openWindow: (id: string) => void
+  hasOpenWindows: boolean
   mobileDockIconIds: string[]
   mobileDraggedIconId: string | null
   onMobileIconPointerDown: (id: string, event: ReactPointerEvent<HTMLButtonElement>) => void
@@ -12,6 +13,7 @@ interface DesktopProps {
 
 export default function Desktop({
   openWindow,
+  hasOpenWindows,
   mobileDockIconIds,
   mobileDraggedIconId,
   onMobileIconPointerDown,
@@ -52,7 +54,11 @@ export default function Desktop({
 
   return (
     <>
-      <div className="pointer-events-none absolute inset-x-0 top-12 z-10 px-4 sm:inset-x-auto sm:right-4 sm:top-20 sm:w-[22rem] sm:px-0">
+      <div
+        className={`pointer-events-none absolute inset-x-0 top-12 px-4 sm:inset-x-auto sm:right-4 sm:top-20 sm:w-[22rem] sm:px-0 ${
+          hasOpenWindows ? 'hidden sm:block' : ''
+        }`}
+      >
         <div className="ml-auto max-w-sm rounded-[28px] border border-white/45 bg-black/18 p-4 text-white shadow-[0_20px_50px_rgba(15,23,42,0.28)] backdrop-blur-xl sm:p-5">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/72">
             {portfolio.name}&apos;s Portfolio OS

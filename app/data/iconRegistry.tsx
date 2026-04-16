@@ -1,6 +1,7 @@
 import {
   AudioLines,
   Briefcase,
+  Building2,
   Bug,
   Code,
   File,
@@ -82,9 +83,15 @@ export const desktopAppIcons: IconDefinition[] = [
   },
   {
     id: 'app-groove-slider',
-    label: 'Hayzer Apps',
+    label: 'Groove Slider',
     icon: <SlidersHorizontal className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-amber-500 text-slate-950'
+  },
+  {
+    id: 'app-indigenous-directory',
+    label: 'Indigenous Directory',
+    icon: <Building2 className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-teal-500 text-white'
   },
   {
     id: 'chopblock',

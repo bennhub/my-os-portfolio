@@ -301,6 +301,20 @@ export default function Home() {
     ])
   );
 
+  const featuredProjectWindows: Record<string, WindowConfig> = {
+    "app-indigenous-directory": {
+      id: "app-indigenous-directory",
+      title: "Indigenous Business Directory",
+      content: (
+        <AppEmbed
+          title="Indigenous Business Directory"
+          url="https://bennhub.github.io/indigenousbusinessdirectory/"
+          description="A searchable directory for Indigenous business listings across Canada."
+        />
+      ),
+    },
+  };
+
   const windowConfigs: Record<string, WindowConfig> = {
     about: {
       id: "about",
@@ -314,8 +328,8 @@ export default function Home() {
     },
     projects: {
       id: "projects",
-      title: "My Projects",
-      content: <Projects />,
+      title: "Project Overview",
+      content: <Projects openWindow={openWindow} />,
     },
     contact: {
       id: "contact",
@@ -358,6 +372,7 @@ export default function Home() {
       title: "ChopBlock",
       content: <AppEmbed title="ChopBlock" url="https://chopblock.hayzer.app/" description="Audio chopping and beat making tool" />,
     },
+    ...featuredProjectWindows,
     ...audioAppWindows,
   };
 
@@ -383,6 +398,7 @@ export default function Home() {
         <MenuBar switchWallpaper={switchWallpaper} />
         <Desktop
           openWindow={openWindow}
+          hasOpenWindows={openWindows.length > 0}
           mobileDockIconIds={mobileDockIconIds}
           mobileDraggedIconId={mobileDraggedIconId}
           onMobileIconPointerDown={handleMobileIconPointerDown}

@@ -206,9 +206,9 @@ export const portfolio = {
     apps: [
       {
         id: "app-groove-slider",
-        title: "Hayzer Apps",
+        title: "Groove Slider",
         description:
-          "My Apps on a landing page.",
+          "A slideshow PWA that syncs music with images and video content.",
         url: "https://hayzer.app/",
       },
       {

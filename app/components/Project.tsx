@@ -1,6 +1,6 @@
 import React from 'react';
-import Image from 'next/image';
-import { Github, ExternalLink, Play, Image as ImageIcon } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Github } from 'lucide-react';
+import { desktopAppIcons } from "../data/iconRegistry";
 import { portfolio } from "../data/portfolio";
 
 interface Project {
@@ -8,134 +8,269 @@ interface Project {
   description: string;
   deployedUrl: string;
   githubUrl?: string;
-  youtubeUrl?: string;
-  imageUrl?: string;
   technologies: string[];
 }
 
-const Projects: React.FC = () => {
-  const renderProjects = (projects: Project[]) =>
-    projects.map((project, index) => (
-      <div
-        key={index}
-        className="bg-white/90 dark:bg-gray-800/90 rounded-2xl border border-gray-200 dark:border-gray-700 
-          shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden backdrop-blur-sm
-          w-full max-w-none"
-      >
-        <div className="flex flex-col xl:flex-row h-full">
-          {/* Left side - Demo/Preview */}
-          <div className="xl:w-1/2 w-full relative bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-700 dark:to-gray-800">
-            <div className="aspect-video relative overflow-hidden">
-              {project.imageUrl ? (
-                <Image
-                  src={project.imageUrl}
-                  alt={`${project.title} preview`}
-                  width={800}
-                  height={450}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-100 dark:from-gray-600 dark:to-gray-700">
-                  <ImageIcon className="w-16 h-16 text-gray-400" />
-                </div>
-              )}
-              
-              {/* Clickable overlay for video */}
-              {project.youtubeUrl && (
-                <a
-                  href={project.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 bg-black/10 hover:bg-black/30 flex items-center justify-center transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="bg-white/90 hover:bg-white text-gray-800 rounded-full p-3 transform group-hover:scale-110 transition-all duration-300 shadow-lg">
-                    <Play className="w-6 h-6 fill-current" />
-                  </div>
-                </a>
-              )}
-            </div>
-            
-            {/* Technology badges */}
-            <div className="p-3 sm:p-4">
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {project.technologies.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-2 py-1 text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 rounded-full
-                      whitespace-nowrap"
-                  >
-                    {tech}
-                  </span>
-                ))}
+interface DesktopAppListing {
+  id: string;
+  title: string;
+  description: string;
+  href?: string;
+  actionLabel: string;
+}
+
+interface ProjectsProps {
+  openWindow: (id: string) => void;
+}
+
+const desktopAppListings: DesktopAppListing[] = [
+  {
+    id: "vscode",
+    title: "Code Practice",
+    description: "An in-browser coding workspace for JavaScript exercises and learning flows.",
+    actionLabel: "Open Window",
+  },
+  {
+    id: "browser",
+    title: "Agent",
+    description: "A browser-style app surface for AI-assisted workflows and experiments.",
+    actionLabel: "Open Window",
+  },
+  {
+    id: "automation",
+    title: "Automation Projects",
+    description: "Hands-on QA automation demos, command surfaces, and testing workflows.",
+    actionLabel: "Open Window",
+  },
+  {
+    id: "media",
+    title: "Media Showcase",
+    description: "A focused hub for music, video, and audio-driven creative work.",
+    actionLabel: "Open Window",
+  },
+  {
+    id: "app-groove-slider",
+    title: "Groove Slider",
+    description: "A slideshow PWA that syncs visuals with music and motion.",
+    href: "https://hayzer.app/",
+    actionLabel: "Launch App",
+  },
+  {
+    id: "app-indigenous-directory",
+    title: "Indigenous Directory",
+    description: "A searchable directory for Indigenous business listings across Canada.",
+    href: "https://bennhub.github.io/indigenousbusinessdirectory/",
+    actionLabel: "Launch App",
+  },
+  {
+    id: "chopblock",
+    title: "ChopBlock",
+    description: "An audio chopping and beat-making tool with a tactile music workflow.",
+    href: "https://chopblock.hayzer.app/",
+    actionLabel: "Launch App",
+  },
+  {
+    id: "app-rec-fx",
+    title: "Rec FX",
+    description: "A browser recorder with live effects, exports, and shareable recordings.",
+    href: "https://bennhub.github.io/RecFX/",
+    actionLabel: "Launch App",
+  },
+  {
+    id: "app-audioblaster",
+    title: "Beat Block Player",
+    description: "A retro-styled audio player with playlists, sharing, and bold UI.",
+    href: "https://bennhub.github.io/block-beat-audio-player/",
+    actionLabel: "Launch App",
+  },
+  {
+    id: "app-audio-paint",
+    title: "Beat Brush",
+    description: "Interactive painting mixed with sound synthesis and audio-reactive visuals.",
+    href: "https://beatbrush.hayzer.app/",
+    actionLabel: "Launch App",
+  },
+  {
+    id: "app-jazz-guitar",
+    title: "Jazz Guitar",
+    description: "An interactive learning tool for chord progressions and guitar practice.",
+    href: "https://bennhub.github.io/jazz-guitar-progression-app/",
+    actionLabel: "Launch App",
+  },
+];
+
+const truncateDescription = (description: string) =>
+  description.length > 120 ? `${description.slice(0, 117)}...` : description;
+
+const Projects: React.FC<ProjectsProps> = ({ openWindow }) => {
+  const appCards = desktopAppIcons
+    .map((iconItem) => {
+      const listing = desktopAppListings.find((item) => item.id === iconItem.id);
+      if (!listing) return null;
+
+      return (
+        <article
+          key={iconItem.id}
+          className="min-w-[220px] max-w-[240px] rounded-[26px] border border-slate-200/80 bg-white/82 p-4 shadow-[0_12px_36px_rgba(15,23,42,0.08)] backdrop-blur-xl transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.14)] dark:border-slate-700/70 dark:bg-slate-900/75"
+        >
+          <div className="flex items-start justify-between gap-3">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/50 bg-white/70 shadow-[0_10px_18px_rgba(15,23,42,0.12)] dark:border-white/10 dark:bg-slate-950/70">
+              <div
+                className={`flex h-9 w-9 items-center justify-center rounded-2xl shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_6px_14px_rgba(15,23,42,0.18)] ${iconItem.badgeClassName}`}
+              >
+                {iconItem.icon}
               </div>
             </div>
+            <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+              Desktop
+            </span>
           </div>
 
-          {/* Right side - Project details */}
-          <div className="xl:w-1/2 w-full p-4 sm:p-6 flex flex-col justify-between">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-2 sm:mb-3">
-                {project.title}
-              </h2>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6">
-                {project.description}
-              </p>
-            </div>
-
-            {/* Action buttons */}
-            <div className="space-y-2 sm:space-y-3">
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                <a
-                  href={project.deployedUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl 
-                    animate-shimmer border border-slate-800 
-                    bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]
-                    text-slate-400 transition-all duration-300 flex-1 group
-                    hover:shadow-lg hover:shadow-slate-500/25 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                >
-                  <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 transition-transform group-hover:scale-110" />
-                  <span className="text-xs sm:text-sm">Live Demo</span>
-                </a>
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-medium rounded-lg sm:rounded-xl 
-                      animate-shimmer border border-slate-800 
-                      bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%]
-                      text-slate-400 transition-all duration-300 flex-1 group
-                      hover:shadow-lg hover:shadow-slate-500/25 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
-                  >
-                    <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2 transition-transform group-hover:scale-110" />
-                    <span className="text-xs sm:text-sm">Code</span>
-                  </a>
-                )}
-              </div>
-            </div>
+          <div className="mt-4 space-y-2">
+            <h2 className="text-base font-semibold text-slate-900 dark:text-white">
+              {listing.title}
+            </h2>
+            <p className="text-sm leading-6 text-slate-600 dark:text-slate-300">
+              {truncateDescription(listing.description)}
+            </p>
           </div>
+
+          <div className="mt-5">
+            {listing.href ? (
+              <a
+                href={listing.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+              >
+                {listing.actionLabel}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            ) : (
+              <button
+                type="button"
+                onClick={() => openWindow(listing.id)}
+                className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+              >
+                {listing.actionLabel}
+                <ArrowUpRight className="h-4 w-4" />
+              </button>
+            )}
+          </div>
+        </article>
+      );
+    })
+    .filter(Boolean);
+
+  const projectCards = portfolio.projects.map((project: Project) => (
+    <article
+      key={project.title}
+      className="flex h-full flex-col rounded-[26px] border border-slate-200/80 bg-white/82 p-5 shadow-[0_12px_36px_rgba(15,23,42,0.08)] backdrop-blur-xl transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(15,23,42,0.14)] dark:border-slate-700/70 dark:bg-slate-900/75"
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div className="min-w-0 flex-1">
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">
+            {project.title}
+          </h2>
+          <p className="mt-2 min-h-[4.5rem] text-sm leading-6 text-slate-600 dark:text-slate-300">
+            {truncateDescription(project.description)}
+          </p>
         </div>
+        <span className="shrink-0 rounded-full bg-orange-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-orange-700 dark:bg-orange-500/15 dark:text-orange-300">
+          Project
+        </span>
       </div>
-    ));
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {project.technologies.slice(0, 3).map((tech) => (
+          <span
+            key={tech}
+            className="rounded-full border border-slate-200 bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300"
+          >
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-auto pt-5 flex flex-wrap gap-2">
+        <a
+          href={project.deployedUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+        >
+          <ExternalLink className="h-4 w-4" />
+          View App
+        </a>
+        {project.githubUrl ? (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+          >
+            <Github className="h-4 w-4" />
+            Code
+          </a>
+        ) : null}
+      </div>
+    </article>
+  ));
 
   return (
     <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-6 sm:py-8">
-      {/* Header */}
-      <div className="text-center mb-8 sm:mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white">
-          Featured Projects
-        </h1>
-        <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-          QA work, creative audio tools, and personal web projects from {portfolio.name}.
-        </p>
+      <div className="mb-8 rounded-[30px] border border-white/70 bg-gradient-to-br from-white/88 via-slate-50/84 to-orange-50/88 p-6 shadow-[0_22px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/10 dark:from-slate-900/85 dark:via-slate-900/80 dark:to-slate-800/80">
+        <div className="max-w-3xl">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-300">
+            Portfolio App Store
+          </p>
+          <h1 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">
+            Browse the desktop apps and project builds in one place
+          </h1>
+          <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
+            This window works like the OS storefront: every desktop app is listed here in a compact format,
+            and the featured projects below link directly to the live builds.
+          </p>
+        </div>
       </div>
 
-      {/* Main Projects Grid */}
-      <div className="space-y-6 sm:space-y-8 mb-12 sm:mb-16">
-        {renderProjects(portfolio.projects)}
-      </div>
+      <section className="mb-10">
+        <div className="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+              Desktop Apps
+            </h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+              Every app currently living on the desktop.
+            </p>
+          </div>
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+            {appCards.length} apps
+          </span>
+        </div>
+        <div className="flex gap-4 overflow-x-auto pb-3">
+          {appCards}
+        </div>
+      </section>
+
+      <section>
+        <div className="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
+              Featured Projects
+            </h2>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">
+              Compact summaries with direct links to each live project.
+            </p>
+          </div>
+          <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700 dark:bg-orange-500/15 dark:text-orange-300">
+            {portfolio.projects.length} projects
+          </span>
+        </div>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          {projectCards}
+        </div>
+      </section>
     </div>
   );
 };
