@@ -19,10 +19,14 @@ export default function Desktop({
   onMobileIconPointerDown,
   onMobileIconClick
 }: DesktopProps) {
-  const desktopColumns = [
-    desktopAppIcons.slice(0, Math.ceil(desktopAppIcons.length / 2)),
-    desktopAppIcons.slice(Math.ceil(desktopAppIcons.length / 2))
-  ].filter((column) => column.length > 0)
+  const desktopCategoryOrder = ['Builder & Automation', 'Web Projects', 'Audio Projects']
+
+  const featuredDesktopGroups = desktopCategoryOrder
+    .map((category) => ({
+      category,
+      icons: desktopAppIcons.filter((icon) => icon.desktopFeatured && icon.category === category)
+    }))
+    .filter((group) => group.icons.length > 0)
 
   const mobileDesktopIcons = mobileIconOrder
     .filter((id) => !mobileDockIconIds.includes(id))
@@ -104,11 +108,24 @@ export default function Desktop({
         </div>
       </div>
 
-      <div className="absolute left-2 top-8 hidden gap-2 p-2 sm:left-4 sm:flex sm:gap-8 sm:p-4">
-        {desktopColumns.map((column, index) => (
-          <div key={index} className="flex flex-col gap-2 sm:gap-4">
-            {column.map(renderIcon)}
-          </div>
+      <div className="absolute left-4 top-14 hidden flex-col items-start gap-4 sm:flex">
+        {featuredDesktopGroups.map((group) => (
+          <section
+            key={group.category}
+            className="w-fit max-w-[calc(100vw-26rem)] rounded-[28px] border border-white/18 bg-black/8 p-4 shadow-[0_18px_40px_rgba(15,23,42,0.14)]"
+          >
+            <div className="mb-3 flex items-center justify-between">
+              <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-white/78">
+                {group.category}
+              </h2>
+              <span className="rounded-full bg-white/12 px-2.5 py-1 text-[10px] font-medium text-white/72">
+                {group.icons.length} featured
+              </span>
+            </div>
+            <div className="grid auto-cols-max grid-flow-col justify-start gap-2 sm:gap-3">
+              {group.icons.map(renderIcon)}
+            </div>
+          </section>
         ))}
       </div>
     </>

@@ -137,6 +137,7 @@ export const portfolio = {
       description:
         "A slideshow PWA that syncs music with images and video content, and has been published on Google Play.",
       deployedUrl: "https://hayzer.app/",
+      category: "Audio Projects",
       technologies: ["PWA", "Slideshows", "Media Sync"],
     },
     {
@@ -144,6 +145,7 @@ export const portfolio = {
       description:
         "A React app for recording audio, applying real-time effects, and downloading or sharing recordings.",
       deployedUrl: "https://bennhub.github.io/RecFX/",
+      category: "Audio Projects",
       technologies: ["React", "Audio Recording", "Effects"],
     },
     {
@@ -151,6 +153,7 @@ export const portfolio = {
       description:
         "A searchable directory for Indigenous business listings across Canada.",
       deployedUrl: "https://bennhub.github.io/indigenousbusinessdirectory/",
+      category: "Web Projects",
       technologies: ["Directory", "Search", "Frontend"],
     },
     {
@@ -158,6 +161,7 @@ export const portfolio = {
       description:
         "A retro-styled audio player with playlist support, social media integration, and embeddable sharing features.",
       deployedUrl: "https://bennhub.github.io/block-beat-audio-player/",
+      category: "Audio Projects",
       technologies: ["Audio Player", "Playlist", "Retro UI", "Web Audio"],
     },
     {
@@ -166,6 +170,7 @@ export const portfolio = {
         "A GitHub repository of testing frameworks, automation examples, and QA-focused project work.",
       deployedUrl: "https://github.com/bennhub/GitHub-QA-Portfolio",
       githubUrl: "https://github.com/bennhub/GitHub-QA-Portfolio",
+      category: "QA & Consulting",
       technologies: ["Cypress", "Playwright", "Selenium", "QA Frameworks"],
     },
     {
@@ -173,6 +178,7 @@ export const portfolio = {
       description:
         "Independent QA consulting focused on strategy, automation, and quality process improvement.",
       deployedUrl: "https://craftqa.com",
+      category: "QA & Consulting",
       technologies: ["Consulting", "QA Strategy", "Automation"],
     },
   ],
