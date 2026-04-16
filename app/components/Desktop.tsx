@@ -1,5 +1,6 @@
 import type { PointerEvent as ReactPointerEvent } from 'react'
 import { desktopAppIcons, desktopPrimaryIcons, iconRegistry, mobileIconOrder } from '../data/iconRegistry'
+import { portfolio } from '../data/portfolio'
 
 interface DesktopProps {
   openWindow: (id: string) => void
@@ -51,6 +52,17 @@ export default function Desktop({
 
   return (
     <>
+      <div className="pointer-events-none absolute inset-x-0 top-12 z-10 px-4 sm:inset-x-auto sm:right-4 sm:top-20 sm:w-[22rem] sm:px-0">
+        <div className="ml-auto max-w-sm rounded-[28px] border border-white/45 bg-black/18 p-4 text-white shadow-[0_20px_50px_rgba(15,23,42,0.28)] backdrop-blur-xl sm:p-5">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/72">
+            {portfolio.name}&apos;s Portfolio OS
+          </p>
+          <p className="mt-2 text-sm font-medium leading-6 text-white/92 sm:text-[15px]">
+            The icons here open real apps and projects I built.
+          </p>
+        </div>
+      </div>
+
       <div
         className="absolute inset-x-0 bottom-[39%] flex justify-center px-3 sm:hidden"
         data-mobile-dropzone="desktop"

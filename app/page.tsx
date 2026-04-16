@@ -18,6 +18,7 @@ import type { ReactNode } from "react";
 import AutomationLab from "./components/AutomationLab";
 import MediaShowcase from "./components/MediaShowcase";
 import AppEmbed from "./components/AppEmbed";
+import WelcomeOverlay from "./components/WelcomeOverlay";
 import { portfolio } from "./data/portfolio";
 import { iconRegistry, mobileDockDefaultIds, mobileIconOrder } from "./data/iconRegistry";
 import wallpaper from "@/public/wallpaper1.png";
@@ -46,6 +47,7 @@ export default function Home() {
   const [windowPositions, setWindowPositions] = useState<Record<string, { bottom: number; width: number; height: number }>>({});
   const [isDockHidden, setIsDockHidden] = useState(false);
   const [isDockOverridden, setIsDockOverridden] = useState(false);
+  const [showWelcomeOverlay, setShowWelcomeOverlay] = useState(false);
 
   // Wallpapers are managed via WallpaperSelector; stored wallpaper src in state and localStorage
 
@@ -68,6 +70,9 @@ export default function Home() {
         setMobileDockIconIds(mobileDockDefaultIds);
       }
     }
+
+    const welcomeDismissed = localStorage.getItem("portfolioOSWelcomeDismissed");
+    setShowWelcomeOverlay(!welcomeDismissed);
   }, []);
 
   useEffect(() => {
@@ -84,6 +89,11 @@ export default function Home() {
     setWallpaper(wallpaperSrc);
     localStorage.setItem("wallpaper", wallpaperSrc);
   };
+
+  const dismissWelcomeOverlay = useCallback(() => {
+    setShowWelcomeOverlay(false);
+    localStorage.setItem("portfolioOSWelcomeDismissed", "true");
+  }, []);
 
   const openWindow = useCallback((id: string) => {
     setOpenWindows((prev) =>
@@ -440,6 +450,8 @@ export default function Home() {
             </div>
           </div>
         ) : null}
+
+        {showWelcomeOverlay ? <WelcomeOverlay onClose={dismissWelcomeOverlay} /> : null}
       </div>
     </ThemeProvider>
   );
