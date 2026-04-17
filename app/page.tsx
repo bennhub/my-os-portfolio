@@ -22,6 +22,8 @@ import { portfolio } from "./data/portfolio";
 import { iconRegistry, mobileDockDefaultIds, mobileIconOrder } from "./data/iconRegistry";
 import wallpaper from "@/public/wallpaper1.png";
 
+const DEFAULT_WALLPAPER = wallpaper.src;
+
 interface WindowConfig {
   id: string;
   title: string;
@@ -34,7 +36,7 @@ export default function Home() {
   const [isMounted, setIsMounted] = useState(false);
   const [openWindows, setOpenWindows] = useState<string[]>([]);
   const [activeDockItem, setActiveDockItem] = useState<string | null>(null);
-  const [wallpaper1, setWallpaper] = useState<string>(wallpaper.src);
+  const [wallpaper1, setWallpaper] = useState<string>(DEFAULT_WALLPAPER);
   const [mobileDockIconIds, setMobileDockIconIds] = useState<string[]>(mobileDockDefaultIds);
   const [mobileDraggedIconId, setMobileDraggedIconId] = useState<string | null>(null);
   const [mobileDragPreview, setMobileDragPreview] = useState<{ x: number; y: number } | null>(null);
@@ -57,7 +59,11 @@ export default function Home() {
     if (savedWindows) setOpenWindows(JSON.parse(savedWindows));
 
     const savedWallpaper = localStorage.getItem("wallpaper");
-    if (savedWallpaper) setWallpaper(savedWallpaper);
+    if (savedWallpaper) {
+      setWallpaper(savedWallpaper);
+    } else {
+      localStorage.setItem("wallpaper", DEFAULT_WALLPAPER);
+    }
 
     const savedMobileDockIcons = localStorage.getItem("mobileDockIconIds");
     if (savedMobileDockIcons) {
@@ -433,8 +439,6 @@ export default function Home() {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleKeyDown]);
-
-  if (!isMounted) return null;
 
   return (
     <ThemeProvider>
