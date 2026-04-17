@@ -1,10 +1,7 @@
 import {
   Github,
   Linkedin,
-  Instagram,
   ArrowRight,
-  ExternalLink,
-  Camera,
 } from "lucide-react";
 import { portfolio } from "../data/portfolio";
 
@@ -19,30 +16,6 @@ const socialLinks = [
     icon: <Linkedin className="w-6 h-6" />,
     label: "LinkedIn",
     url: portfolio.linkedInUrl,
-    color: "hover:text-gray-800 dark:hover:text-gray-200",
-  },
-  {
-    icon: <Camera className="w-6 h-6" />,
-    label: "Flickr",
-    url: portfolio.flickrUrl,
-    color: "hover:text-gray-800 dark:hover:text-gray-200",
-  },
-  {
-    icon: <Instagram className="w-6 h-6" />,
-    label: "Instagram",
-    url: portfolio.instagramUrl,
-    color: "hover:text-gray-800 dark:hover:text-gray-200",
-  },
-  {
-    icon: <ExternalLink className="w-6 h-6" />,
-    label: "Portfolio",
-    url: portfolio.portfolioUrl,
-    color: "hover:text-gray-800 dark:hover:text-gray-200",
-  },
-  {
-    icon: <ExternalLink className="w-6 h-6" />,
-    label: "CraftQA",
-    url: portfolio.consultingUrl,
     color: "hover:text-gray-800 dark:hover:text-gray-200",
   },
 ];

@@ -19,7 +19,7 @@ export default function ResumeWindow({
       <div className="p-4 sm:p-6 space-y-6">
         <div>
           <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{portfolio.name}</h2>
-          <p className="text-gray-600 dark:text-gray-300">{portfolio.title}</p>
+          <p className="text-gray-600 dark:text-gray-300">QA Engineer</p>
           <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
             {portfolio.location} • <a href={portfolio.linkedInUrl} target="_blank" rel="noreferrer" className="underline">LinkedIn</a> • <a href={portfolio.githubUrl} target="_blank" rel="noreferrer" className="underline">GitHub</a>
           </p>
@@ -79,14 +79,6 @@ export default function ResumeWindow({
               className="block text-gray-700 dark:text-gray-300 underline"
             >
               LinkedIn
-            </a>
-            <a
-              href={portfolio.consultingUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="block text-gray-700 dark:text-gray-300 underline"
-            >
-              CraftQA
             </a>
           </div>
         </div>

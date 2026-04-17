@@ -64,7 +64,7 @@ const Terminal: React.FC = () => {
               .join('\n')
             break
           case 'contact':
-            response = `GitHub: ${portfolio.githubUrl.replace("https://", "")} | LinkedIn: ${portfolio.linkedInUrl.replace("https://", "")} | Portfolio: ${portfolio.portfolioUrl.replace("https://", "")} | CraftQA: ${portfolio.consultingUrl.replace("https://", "")}`
+            response = `GitHub: ${portfolio.githubUrl.replace("https://", "")} | LinkedIn: ${portfolio.linkedInUrl.replace("https://", "")} | Portfolio: ${portfolio.portfolioUrl.replace("https://", "")}`
             break
           case 'game':
             if (!gameStarted) {

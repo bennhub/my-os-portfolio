@@ -10,7 +10,6 @@ export const portfolio = {
   linkedInUrl: "https://ca.linkedin.com/in/benjaminhayesneilson",
   instagramUrl: "http://instagram.com/bens.my.name",
   flickrUrl: "http://flickr.com/benhayze",
-  consultingUrl: "https://craftqa.com",
   qaPortfolioUrl: "https://github.com/bennhub/GitHub-QA-Portfolio",
   bandcampUrl: "https://b-hayes.bandcamp.com/album/b-hayes-beats-pt-3?from=embed",
   contactNote: "Reach out via LinkedIn, GitHub, or the live portfolio.",
@@ -18,8 +17,8 @@ export const portfolio = {
   heroBlurb:
     "Crafting quality software by day, creating beats and capturing moments by night. Where technology meets creativity.",
   about: [
-    "I work as a software testing professional by day, and indulge in front-end coding in my spare time. Outside of work, I'm passionate about music production, photography, and digital art.",
-    "Maintaining a healthy work-life balance is important to me. When I'm not in the office, you can find me hiking and camping, attending music and photography meet-ups, or working on DIY projects.",
+    "I am a QA engineer who enjoys digging into how products behave, where they break, and how to make them better. Outside of my testing work, I like vibe coding, building front-end experiments, and utilizing AI to explore ideas faster and turn rough concepts into something real.",
+    "A lot of my personal work lives at the intersection of technology and creativity. I spend time making music, creating digital projects, and following whatever interesting idea pulls me in next. I also value getting away from the screen through outdoor activities like hiking, camping, and exploring new places.",
   ],
   funFact:
     "I escape the city by spending time on a little piece of land I bought on the Gulf Islands.",
@@ -31,7 +30,7 @@ export const portfolio = {
     "Exploring new areas",
   ],
   experienceOverview:
-    "I'm a QA engineer with over 10 years of experience testing web and mobile apps. I like breaking things, figuring out why they're broken, and working with teams to make them better. I've worked across functional, automated, and performance testing, while also building test strategies and frameworks that help teams catch the issues that matter before users see them.",
+    "I'm a QA engineer with over 10 years of experience testing web and mobile applications. I enjoy finding weak spots, understanding why they happen, and working closely with teams to improve the product before those issues reach users. My background spans functional, automated, and performance testing, along with building test strategies and frameworks that help teams focus on the problems that matter most.",
   workValues: [
     "Each day brings new challenges and excitement.",
     "I thrive on identifying and breaking flaws in systems.",
@@ -76,7 +75,7 @@ export const portfolio = {
     },
     {
       role: "QA Consulting",
-      company: "CraftQA.com",
+      company: "CraftQA",
       location: "Remote",
       period: "2023 - Present",
       bullets: [
@@ -177,7 +176,7 @@ export const portfolio = {
       title: "CraftQA",
       description:
         "Independent QA consulting focused on strategy, automation, and quality process improvement.",
-      deployedUrl: "https://craftqa.com",
+      deployedUrl: "https://bennhub.github.io/craftqa/",
       category: "QA & Consulting",
       technologies: ["Consulting", "QA Strategy", "Automation"],
     },
