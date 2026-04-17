@@ -14,7 +14,7 @@ interface WallpaperSelectorProps {
 const wallpapers = [
   { id: 1, src: wallpaper1.src, alt: "Stars above Squamish | Ben N." },
   { id: 2, src: wallpaper2.src, alt: "3rd Beach | Ben N." },
-  { id: 3, src: wallpaper3.src, alt: "Wallpaper 3" },
+  { id: 3, src: wallpaper3.src, alt: "Sunset Beach | Ben N" },
   { id: 7, src: wallpaper7.src, alt: "Van Sunset | Ben.N" },
   { id: 9, src: wallpaper9.src, alt: "Tofino | Ben.N" }
 ];
