@@ -95,14 +95,6 @@ export default function Home() {
     localStorage.setItem("portfolioOSWelcomeDismissed", "true");
   }, []);
 
-  const openWindow = useCallback((id: string) => {
-    setOpenWindows((prev) =>
-      prev.includes(id)
-        ? [...prev.filter((windowId) => windowId !== id), id]
-        : [...prev, id]
-    );
-  }, []);
-
   const removeWindowPosition = useCallback((windowId: string) => {
     setWindowPositions(prev => {
       const newPositions = { ...prev };
@@ -116,21 +108,6 @@ export default function Home() {
     setActiveDockItem((prev) => (prev === id ? null : prev));
     removeWindowPosition(id);
   }, [removeWindowPosition]);
-
-  const handleDockItemClick = useCallback((id: string) => {
-    openWindow(id);
-    setActiveDockItem(id);
-  }, [openWindow]);
-
-  const handleMobileIconClick = useCallback((id: string) => {
-    if (suppressMobileClickRef.current) {
-      suppressMobileClickRef.current = false;
-      return;
-    }
-
-    openWindow(id);
-    setActiveDockItem(id);
-  }, [openWindow]);
 
   // Window tracking callbacks
   const updateWindowPosition = useCallback((windowId: string, position: { bottom: number; width: number; height: number }) => {
@@ -315,6 +292,73 @@ export default function Home() {
     },
   };
 
+  const externalAppWindows = Object.fromEntries(
+    Object.values(iconRegistry)
+      .filter((icon) => icon.externalUrl)
+      .map((icon) => [
+        icon.id,
+        {
+          id: icon.id,
+          title: icon.storeTitle ?? icon.label,
+          content: (
+            <AppEmbed
+              title={icon.storeTitle ?? icon.label}
+              url={icon.externalUrl!}
+              description={icon.storeDescription ?? icon.label}
+            />
+          ),
+        },
+      ])
+  );
+
+  const internalWindowIds = new Set([
+    "about",
+    "work-experience",
+    "projects",
+    "contact",
+    "vscode",
+    "browser",
+    "automation",
+    "terminal",
+    "resume",
+    "media",
+    "chopblock",
+    ...Object.keys(featuredProjectWindows),
+    ...Object.keys(audioAppWindows),
+    ...Object.keys(externalAppWindows),
+  ]);
+
+  const openWindow = useCallback((id: string) => {
+    if (!internalWindowIds.has(id)) {
+      const externalUrl = iconRegistry[id]?.externalUrl;
+      if (externalUrl) {
+        window.open(externalUrl, "_blank", "noopener,noreferrer");
+        return;
+      }
+    }
+
+    setOpenWindows((prev) =>
+      prev.includes(id)
+        ? [...prev.filter((windowId) => windowId !== id), id]
+        : [...prev, id]
+    );
+  }, [internalWindowIds]);
+
+  const handleDockItemClick = useCallback((id: string) => {
+    openWindow(id);
+    setActiveDockItem(id);
+  }, [openWindow]);
+
+  const handleMobileIconClick = useCallback((id: string) => {
+    if (suppressMobileClickRef.current) {
+      suppressMobileClickRef.current = false;
+      return;
+    }
+
+    openWindow(id);
+    setActiveDockItem(id);
+  }, [openWindow]);
+
   const windowConfigs: Record<string, WindowConfig> = {
     about: {
       id: "about",
@@ -372,6 +416,7 @@ export default function Home() {
       title: "ChopBlock",
       content: <AppEmbed title="ChopBlock" url="https://chopblock.hayzer.app/" description="Audio chopping and beat making tool" />,
     },
+    ...externalAppWindows,
     ...featuredProjectWindows,
     ...audioAppWindows,
   };

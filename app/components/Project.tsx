@@ -51,26 +51,14 @@ const Projects: React.FC<ProjectsProps> = ({ openWindow }) => {
       </div>
 
       <div className="mt-5">
-        {iconItem.externalUrl ? (
-          <a
-            href={iconItem.externalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
-          >
-            {iconItem.actionLabel ?? 'Launch App'}
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-        ) : (
-          <button
-            type="button"
-            onClick={() => openWindow(iconItem.id)}
-            className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
-          >
-            {iconItem.actionLabel ?? 'Open Window'}
-            <ArrowUpRight className="h-4 w-4" />
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={() => openWindow(iconItem.id)}
+          className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
+        >
+          {iconItem.externalUrl ? 'Open Window' : iconItem.actionLabel ?? 'Open Window'}
+          <ArrowUpRight className="h-4 w-4" />
+        </button>
       </div>
     </article>
   );

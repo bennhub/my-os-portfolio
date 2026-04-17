@@ -1,5 +1,6 @@
 import {
   AudioLines,
+  Bot,
   Briefcase,
   Building2,
   Bug,
@@ -95,6 +96,18 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Automation Projects',
     storeDescription: 'Hands-on QA automation demos, command surfaces, and testing workflows.',
     actionLabel: 'Open Window'
+  },
+  {
+    id: 'app-ai-test-code-dojo',
+    label: 'AI Test Code Dojo',
+    icon: <Bot className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-violet-600 text-white',
+    category: 'Builder & Automation',
+    desktopFeatured: true,
+    storeTitle: 'AI Test Code Dojo',
+    storeDescription: 'An AI sandbox for testing code prompts, experiments, and dojo-style practice flows.',
+    externalUrl: 'https://bennhub.github.io/ai-sandboxer/',
+    actionLabel: 'Launch App'
   },
   {
     id: 'media',
