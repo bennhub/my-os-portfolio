@@ -133,12 +133,12 @@ export const portfolio = {
   ],
   projects: [
     {
-      title: "Groove Slider",
+      title: "Hayzer Apps",
       description:
-        "A slideshow PWA that syncs music with images and video content, and has been published on Google Play.",
+        "A showcase hub for Hayzer audio and visual app experiments, bringing multiple creative tools into one launch point.",
       deployedUrl: "https://hayzer.app/",
       category: "Audio Projects",
-      technologies: ["PWA", "Slideshows", "Media Sync"],
+      technologies: ["PWA", "Creative Tools", "Media Showcase"],
     },
     {
       title: "Rec FX",
@@ -212,9 +212,9 @@ export const portfolio = {
     apps: [
       {
         id: "app-groove-slider",
-        title: "Groove Slider",
+        title: "Hayzer Apps",
         description:
-          "A slideshow PWA that syncs music with images and video content.",
+          "A showcase hub for Hayzer audio and visual app experiments.",
         url: "https://hayzer.app/",
       },
       {

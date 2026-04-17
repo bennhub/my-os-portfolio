@@ -4,11 +4,18 @@ import { portfolio } from "../data/portfolio";
 interface ResumeWindowProps {
   onClose: () => void;
   onPositionChange?: (windowId: string, position: { bottom: number; width: number; height: number }) => void;
+  windowId?: string;
+  title?: string;
 }
 
-export default function ResumeWindow({ onClose, onPositionChange }: ResumeWindowProps) {
+export default function ResumeWindow({
+  onClose,
+  onPositionChange,
+  windowId = "resume",
+  title = "Resume"
+}: ResumeWindowProps) {
   return (
-    <Window id="resume" title="Resume" onClose={onClose} onPositionChange={onPositionChange}>
+    <Window id={windowId} title={title} onClose={onClose} onPositionChange={onPositionChange}>
       <div className="p-4 sm:p-6 space-y-6">
         <div>
           <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{portfolio.name}</h2>

@@ -13,7 +13,6 @@ import ResumeWindow from "./components/ResumeWindow";
 import ProfileCard from "./components/AboutMe";
 import ConnectWithMe from "./components/Social";
 import Projects from "./components/Project";
-import WorkExperience from "./components/WorkExperience";
 import type { ReactNode } from "react";
 import AutomationLab from "./components/AutomationLab";
 import MediaShowcase from "./components/MediaShowcase";
@@ -64,7 +63,9 @@ export default function Home() {
     if (savedMobileDockIcons) {
       try {
         const parsed = JSON.parse(savedMobileDockIcons) as string[];
-        const sanitized = parsed.filter((id, index) => iconRegistry[id] && parsed.indexOf(id) === index).slice(0, MOBILE_DOCK_LIMIT);
+        const sanitized = parsed
+          .filter((id, index) => id !== "resume" && iconRegistry[id] && parsed.indexOf(id) === index)
+          .slice(0, MOBILE_DOCK_LIMIT);
         setMobileDockIconIds(sanitized);
       } catch {
         setMobileDockIconIds(mobileDockDefaultIds);
@@ -367,8 +368,9 @@ export default function Home() {
     },
     "work-experience": {
       id: "work-experience",
-      title: "QA Life",
-      content: <WorkExperience />,
+      title: "Resume",
+      content: null,
+      isResume: true,
     },
     projects: {
       id: "projects",
@@ -455,7 +457,15 @@ export default function Home() {
           if (!config) return null;
 
           if (config.isResume) {
-            return <ResumeWindow key={windowId} onClose={() => closeWindow(windowId)} onPositionChange={updateWindowPosition} />;
+            return (
+              <ResumeWindow
+                key={windowId}
+                windowId={windowId}
+                title={config.title}
+                onClose={() => closeWindow(windowId)}
+                onPositionChange={updateWindowPosition}
+              />
+            );
           }
 
           return (

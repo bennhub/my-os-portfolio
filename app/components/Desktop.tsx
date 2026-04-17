@@ -20,6 +20,9 @@ export default function Desktop({
   onMobileIconClick
 }: DesktopProps) {
   const desktopCategoryOrder = ['Builder & Automation', 'Web Projects', 'Audio Projects']
+  const desktopCategoryLabels: Record<string, string> = {
+    'Builder & Automation': 'AI & Automation Projects'
+  }
 
   const featuredDesktopGroups = desktopCategoryOrder
     .map((category) => ({
@@ -116,7 +119,7 @@ export default function Desktop({
           >
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-xs font-semibold uppercase tracking-[0.22em] text-white/78">
-                {group.category}
+                {desktopCategoryLabels[group.category] ?? group.category}
               </h2>
               <span className="rounded-full bg-white/12 px-2.5 py-1 text-[10px] font-medium text-white/72">
                 {group.icons.length} featured

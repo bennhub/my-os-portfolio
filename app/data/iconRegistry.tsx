@@ -9,10 +9,11 @@ import {
   Film,
   Globe,
   Mail,
+  Mic,
   Radio,
-  SlidersHorizontal,
   Terminal,
   User,
+  Zap,
 } from 'lucide-react'
 import { ClipboardList } from 'lucide-react'
 import type { ReactNode } from 'react'
@@ -81,7 +82,7 @@ export const desktopAppIcons: IconDefinition[] = [
     icon: <Globe className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-cyan-500 text-white',
     category: 'Builder & Automation',
-    desktopFeatured: true,
+    desktopFeatured: false,
     storeTitle: 'Agent',
     storeDescription: 'A browser-style app surface for AI-assisted workflows and experiments.',
     actionLabel: 'Open Window'
@@ -110,6 +111,18 @@ export const desktopAppIcons: IconDefinition[] = [
     actionLabel: 'Launch App'
   },
   {
+    id: 'app-gab-lab-ai',
+    label: 'Gab Lab AI',
+    icon: <Mic className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-sky-600 text-white',
+    category: 'Builder & Automation',
+    desktopFeatured: true,
+    storeTitle: 'Gab Lab AI',
+    storeDescription: 'An AI speech support app built to help with guided speaking and communication practice.',
+    externalUrl: 'https://bennhub.github.io/Gab-Lab-AI/',
+    actionLabel: 'Launch App'
+  },
+  {
     id: 'media',
     label: 'Media Showcase',
     icon: <Film className="h-5 w-5 sm:h-5 sm:w-5" />,
@@ -122,13 +135,13 @@ export const desktopAppIcons: IconDefinition[] = [
   },
   {
     id: 'app-groove-slider',
-    label: 'Groove Slider',
-    icon: <SlidersHorizontal className="h-5 w-5 sm:h-5 sm:w-5" />,
+    label: 'Hayzer Apps',
+    icon: <Zap className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-amber-500 text-slate-950',
     category: 'Audio Projects',
     desktopFeatured: true,
-    storeTitle: 'Groove Slider',
-    storeDescription: 'A slideshow PWA that syncs visuals with music and motion.',
+    storeTitle: 'Hayzer Apps',
+    storeDescription: 'A lightning-fast showcase hub for Hayzer audio and visual app experiments.',
     externalUrl: 'https://hayzer.app/',
     actionLabel: 'Launch App'
   },
@@ -142,6 +155,36 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Indigenous Directory',
     storeDescription: 'A searchable directory for Indigenous business listings across Canada.',
     externalUrl: 'https://bennhub.github.io/indigenousbusinessdirectory/',
+    actionLabel: 'Launch App'
+  },
+  {
+    id: 'app-craftqa',
+    label: 'CraftQA',
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 sm:h-5 sm:w-5"
+        aria-hidden="true"
+      >
+        <path d="M9 9.5C9 7.6 10.34 6 12 6s3 1.6 3 3.5" />
+        <path d="M5 13.5c1.8-2.1 11.2-2.1 14 0" />
+        <path d="M7 13.5 6 16" />
+        <path d="M12 13.5v3" />
+        <path d="m17 13.5 1 2.5" />
+        <ellipse cx="12" cy="11.5" rx="7" ry="2.5" />
+      </svg>
+    ),
+    badgeClassName: 'bg-slate-900 text-emerald-300',
+    category: 'Web Projects',
+    desktopFeatured: true,
+    storeTitle: 'CraftQA',
+    storeDescription: 'A QA-focused site showcasing CraftQA with a playful retro sci-fi tone.',
+    externalUrl: 'https://bennhub.github.io/craftqa/',
     actionLabel: 'Launch App'
   },
   {
@@ -186,7 +229,7 @@ export const desktopAppIcons: IconDefinition[] = [
     icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-indigo-500 text-white',
     category: 'Audio Projects',
-    desktopFeatured: false,
+    desktopFeatured: true,
     storeTitle: 'Beat Brush',
     storeDescription: 'Interactive painting mixed with sound synthesis and audio-reactive visuals.',
     externalUrl: 'https://beatbrush.hayzer.app/',
@@ -232,12 +275,6 @@ export const dockIcons: IconDefinition[] = [
     badgeClassName: 'bg-emerald-500 text-white'
   },
   {
-    id: 'resume',
-    label: 'Resume',
-    icon: <File className="h-6 w-6 sm:h-5 sm:w-5" />,
-    badgeClassName: 'bg-slate-700 text-white'
-  },
-  {
     id: 'terminal',
     label: 'Terminal',
     icon: <Terminal className="h-6 w-6 sm:h-5 sm:w-5" />,
@@ -246,7 +283,7 @@ export const dockIcons: IconDefinition[] = [
 ]
 
 export const desktopDockIcons = dockIcons.filter((icon) =>
-  ['about', 'work-experience', 'projects', 'contact', 'resume', 'terminal'].includes(icon.id)
+  ['about', 'work-experience', 'projects', 'contact', 'terminal'].includes(icon.id)
 )
 
 const combinedIcons = [...dockIcons, ...desktopAppIcons, ...desktopPrimaryIcons]
@@ -258,7 +295,7 @@ export const iconRegistry = combinedIcons.reduce<Record<string, IconDefinition>>
 
 // Filter out keyboard-requiring apps for mobile
 const mobileFilteredIcons = combinedIcons.filter(icon =>
-  !['terminal', 'vscode'].includes(icon.id)
+  !['terminal', 'vscode', 'browser', 'app-craftqa', 'resume'].includes(icon.id)
 )
 
 export const mobileIconOrder = mobileFilteredIcons.reduce<string[]>((acc, icon) => {
