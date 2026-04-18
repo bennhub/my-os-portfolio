@@ -37,7 +37,7 @@ const Projects: React.FC<ProjectsProps> = ({ openWindow }) => {
           </div>
         </div>
         <span className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:bg-slate-800 dark:text-slate-300">
-          {iconItem.desktopFeatured ? 'Desktop' : 'Store'}
+          {iconItem.desktopFeatured ? 'Desktop' : 'Hub'}
         </span>
       </div>
 
@@ -137,14 +137,14 @@ const Projects: React.FC<ProjectsProps> = ({ openWindow }) => {
       <div className="mb-8 rounded-[30px] border border-white/70 bg-gradient-to-br from-white/88 via-slate-50/84 to-orange-50/88 p-6 shadow-[0_22px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/10 dark:from-slate-900/85 dark:via-slate-900/80 dark:to-slate-800/80">
         <div className="max-w-3xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-300">
-            Portfolio App Store
+            Portfolio Project Hub
           </p>
           <h1 className="mt-3 text-3xl font-semibold text-slate-900 dark:text-white sm:text-4xl">
-            Browse the desktop apps and project builds in one place
+            Explore the apps and projects I built in one place
           </h1>
           <p className="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300 sm:text-base">
-            This window works like the OS storefront: every desktop app is listed here in a compact format,
-            and the featured projects below link directly to the live builds.
+            This hub brings together the desktop apps I built for this portfolio OS and the featured projects I shipped.
+            Each entry gives you a compact overview with direct access to the live build or app window.
           </p>
         </div>
       </div>

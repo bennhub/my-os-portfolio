@@ -156,6 +156,14 @@ export const portfolio = {
       technologies: ["Directory", "Search", "Frontend"],
     },
     {
+      title: "Portfolio Website V1",
+      description:
+        "My original portfolio website, kept here as an earlier example of my web design, personal branding, and front-end experimentation.",
+      deployedUrl: "https://bennhub.github.io/ben.github.io/",
+      category: "Web Projects",
+      technologies: ["Portfolio", "Frontend", "Personal Brand"],
+    },
+    {
       title: "Beat Block Audio Player",
       description:
         "A retro-styled audio player with playlist support, social media integration, and embeddable sharing features.",
