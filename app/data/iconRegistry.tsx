@@ -71,7 +71,7 @@ export const desktopAppIcons: IconDefinition[] = [
     icon: <Code className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-blue-500 text-white',
     category: 'Builder & Automation',
-    desktopFeatured: true,
+    desktopFeatured: false,
     storeTitle: 'Code Practice',
     storeDescription: 'An in-browser coding workspace for JavaScript exercises and learning flows.',
     actionLabel: 'Open Window'
@@ -85,17 +85,6 @@ export const desktopAppIcons: IconDefinition[] = [
     desktopFeatured: false,
     storeTitle: 'Agent',
     storeDescription: 'A browser-style app surface for AI-assisted workflows and experiments.',
-    actionLabel: 'Open Window'
-  },
-  {
-    id: 'automation',
-    label: 'Automation Projects',
-    icon: <Bug className="h-5 w-5 sm:h-5 sm:w-5" />,
-    badgeClassName: 'bg-lime-500 text-slate-950',
-    category: 'Builder & Automation',
-    desktopFeatured: true,
-    storeTitle: 'Automation Projects',
-    storeDescription: 'Hands-on QA automation demos, command surfaces, and testing workflows.',
     actionLabel: 'Open Window'
   },
   {
@@ -121,6 +110,17 @@ export const desktopAppIcons: IconDefinition[] = [
     storeDescription: 'An AI speech support app built to help with guided speaking and communication practice.',
     externalUrl: 'https://bennhub.github.io/Gab-Lab-AI/',
     actionLabel: 'Launch App'
+  },
+  {
+    id: 'automation',
+    label: 'Automation Projects',
+    icon: <Bug className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-lime-500 text-slate-950',
+    category: 'Builder & Automation',
+    desktopFeatured: true,
+    storeTitle: 'Automation Projects',
+    storeDescription: 'Hands-on QA automation demos, command surfaces, and testing workflows.',
+    actionLabel: 'Open Window'
   },
   {
     id: 'media',
@@ -205,10 +205,40 @@ export const desktopAppIcons: IconDefinition[] = [
     icon: <Radio className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-rose-500 text-white',
     category: 'Audio Projects',
-    desktopFeatured: true,
+    desktopFeatured: false,
     storeTitle: 'Rec FX',
     storeDescription: 'A browser recorder with live effects, exports, and shareable recordings.',
     externalUrl: 'https://bennhub.github.io/RecFX/',
+    actionLabel: 'Launch App'
+  },
+  {
+    id: 'app-mixtape-machine',
+    label: 'Mixtape Machine',
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 sm:h-5 sm:w-5"
+        aria-hidden="true"
+      >
+        <rect x="3.5" y="5" width="17" height="14" rx="2.5" />
+        <circle cx="9" cy="12" r="2.2" />
+        <circle cx="15" cy="12" r="2.2" />
+        <path d="M11.2 12h1.6" />
+        <path d="M6.5 8.2h11" />
+        <path d="M7.4 15.8h9.2" />
+      </svg>
+    ),
+    badgeClassName: 'bg-amber-200 text-stone-900',
+    category: 'Audio Projects',
+    desktopFeatured: true,
+    storeTitle: 'Mixtape Machine',
+    storeDescription: 'A cassette-inspired mixtape app for building and playing audio sessions.',
+    externalUrl: 'https://mixtape.hayzer.app/',
     actionLabel: 'Launch App'
   },
   {
