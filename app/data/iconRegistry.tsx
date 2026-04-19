@@ -1,15 +1,18 @@
 import {
   AudioLines,
   Bot,
+  BookOpen,
   Briefcase,
   Building2,
   Bug,
   Code,
+  CirclePlay,
   File,
   Film,
   Globe,
   Mail,
   Mic,
+  Paintbrush,
   Radio,
   Terminal,
   User,
@@ -188,6 +191,18 @@ export const desktopAppIcons: IconDefinition[] = [
     actionLabel: 'Launch App'
   },
   {
+    id: 'app-code-sketch-book',
+    label: 'Code Sketch Book',
+    icon: <BookOpen className="h-5 w-5 sm:h-5 sm:w-5" />,
+    badgeClassName: 'bg-amber-100 text-stone-900',
+    category: 'Web Projects',
+    desktopFeatured: true,
+    storeTitle: 'Code Sketch Book',
+    storeDescription: 'A browsable sketchbook of code experiments, visual ideas, and interactive front-end concepts.',
+    externalUrl: 'https://bennhub.github.io/code-sketch-book/',
+    actionLabel: 'Launch App'
+  },
+  {
     id: 'chopblock',
     label: 'ChopBlock',
     icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
@@ -244,7 +259,7 @@ export const desktopAppIcons: IconDefinition[] = [
   {
     id: 'app-audioblaster',
     label: 'Beat Block Player',
-    icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
+    icon: <CirclePlay className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-cyan-500 text-white',
     category: 'Audio Projects',
     desktopFeatured: true,
@@ -256,7 +271,7 @@ export const desktopAppIcons: IconDefinition[] = [
   {
     id: 'app-audio-paint',
     label: 'Beat Brush',
-    icon: <AudioLines className="h-5 w-5 sm:h-5 sm:w-5" />,
+    icon: <Paintbrush className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-indigo-500 text-white',
     category: 'Audio Projects',
     desktopFeatured: true,

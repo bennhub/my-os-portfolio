@@ -164,6 +164,14 @@ export const portfolio = {
       technologies: ["Portfolio", "Frontend", "Personal Brand"],
     },
     {
+      title: "Code Sketch Book",
+      description:
+        "A collection of code sketches and front-end experiments gathered into a single interactive reference site.",
+      deployedUrl: "https://bennhub.github.io/code-sketch-book/",
+      category: "Web Projects",
+      technologies: ["Code Experiments", "Frontend", "Interactive Showcase"],
+    },
+    {
       title: "Beat Block Audio Player",
       description:
         "A retro-styled audio player with playlist support, social media integration, and embeddable sharing features.",
