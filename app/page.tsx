@@ -31,6 +31,21 @@ interface WindowConfig {
   isResume?: boolean;
 }
 
+const normalizeExternalUrl = (url: string) => {
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname.replace(/^www\./, "");
+
+    if (hostname === "craftqa.com") {
+      return "https://bennhub.github.io/craftqa/";
+    }
+
+    return url;
+  } catch {
+    return url;
+  }
+};
+
 export default function Home() {
   const MOBILE_DOCK_LIMIT = 6;
   const [isMounted, setIsMounted] = useState(false);
@@ -339,7 +354,7 @@ export default function Home() {
     if (!internalWindowIds.has(id)) {
       const externalUrl = iconRegistry[id]?.externalUrl;
       if (externalUrl) {
-        window.open(externalUrl, "_blank", "noopener,noreferrer");
+        window.open(normalizeExternalUrl(externalUrl), "_blank", "noopener,noreferrer");
         return;
       }
     }

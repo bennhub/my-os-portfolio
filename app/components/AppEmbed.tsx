@@ -4,7 +4,24 @@ interface AppEmbedProps {
   description: string;
 }
 
+const normalizeAppUrl = (url: string) => {
+  try {
+    const parsedUrl = new URL(url);
+    const hostname = parsedUrl.hostname.replace(/^www\./, "");
+
+    if (hostname === "craftqa.com") {
+      return "https://bennhub.github.io/craftqa/";
+    }
+
+    return url;
+  } catch {
+    return url;
+  }
+};
+
 export default function AppEmbed({ title, url, description }: AppEmbedProps) {
+  const resolvedUrl = normalizeAppUrl(url);
+
   return (
     <div className="w-full h-full flex flex-col">
       <div className="flex items-center justify-between gap-2 border-b border-gray-200 dark:border-gray-700 bg-white/70 dark:bg-gray-900/60 px-3 py-1.5">
@@ -14,7 +31,7 @@ export default function AppEmbed({ title, url, description }: AppEmbedProps) {
           </p>
         </div>
         <a
-          href={url}
+          href={resolvedUrl}
           target="_blank"
           rel="noreferrer"
           className="shrink-0 rounded border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 transition hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-300"
@@ -23,7 +40,7 @@ export default function AppEmbed({ title, url, description }: AppEmbedProps) {
         </a>
       </div>
       <div className="flex-1 bg-white dark:bg-gray-950">
-        <iframe src={url} title={title} className="w-full h-full border-0" />
+        <iframe src={resolvedUrl} title={title} className="w-full h-full border-0" />
       </div>
     </div>
   );
