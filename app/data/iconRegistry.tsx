@@ -31,6 +31,7 @@ export interface IconDefinition {
   storeTitle?: string
   storeDescription?: string
   externalUrl?: string
+  repoUrl?: string
   actionLabel?: string
 }
 
@@ -100,6 +101,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'AI Test Code Dojo',
     storeDescription: 'An AI sandbox for testing code prompts, experiments, and dojo-style practice flows.',
     externalUrl: 'https://bennhub.github.io/ai-sandboxer/',
+    repoUrl: 'https://github.com/bennhub/ai-sandboxer',
     actionLabel: 'Launch App'
   },
   {
@@ -112,6 +114,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Gab Lab AI',
     storeDescription: 'An AI speech support app built to help with guided speaking and communication practice.',
     externalUrl: 'https://bennhub.github.io/Gab-Lab-AI/',
+    repoUrl: 'https://github.com/bennhub/Gab-Lab-AI',
     actionLabel: 'Launch App'
   },
   {
@@ -158,6 +161,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Indigenous Directory',
     storeDescription: 'A searchable directory for Indigenous business listings across Canada.',
     externalUrl: 'https://bennhub.github.io/indigenousbusinessdirectory/',
+    repoUrl: 'https://github.com/bennhub/indigenousbusinessdirectory',
     actionLabel: 'Launch App'
   },
   {
@@ -188,6 +192,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'CraftQA',
     storeDescription: 'A QA-focused site showcasing CraftQA with a playful retro sci-fi tone.',
     externalUrl: 'https://bennhub.github.io/craftqa/',
+    repoUrl: 'https://github.com/bennhub/craftqa',
     actionLabel: 'Launch App'
   },
   {
@@ -200,6 +205,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Code Sketch Book',
     storeDescription: 'A browsable sketchbook of code experiments, visual ideas, and interactive front-end concepts.',
     externalUrl: 'https://bennhub.github.io/code-sketch-book/',
+    repoUrl: 'https://github.com/bennhub/code-sketch-book',
     actionLabel: 'Launch App'
   },
   {
@@ -254,6 +260,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Mixtape Machine',
     storeDescription: 'A cassette-inspired mixtape app for building and playing audio sessions.',
     externalUrl: 'https://mixtape.hayzer.app/',
+    repoUrl: 'https://github.com/bennhub/mixtape-machine',
     actionLabel: 'Launch App'
   },
   {
@@ -266,6 +273,7 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Beat Block Player',
     storeDescription: 'A retro-styled audio player with playlists, sharing, and bold UI.',
     externalUrl: 'https://bennhub.github.io/block-beat-audio-player/',
+    repoUrl: 'https://github.com/bennhub/block-beat-audio-player',
     actionLabel: 'Launch App'
   },
   {

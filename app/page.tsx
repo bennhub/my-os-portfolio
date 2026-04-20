@@ -309,6 +309,7 @@ export default function Home() {
           title="Indigenous Business Directory"
           url="https://bennhub.github.io/indigenousbusinessdirectory/"
           description="A searchable directory for Indigenous business listings across Canada."
+          repoUrl="https://github.com/bennhub/indigenousbusinessdirectory"
         />
       ),
     },
@@ -327,6 +328,7 @@ export default function Home() {
               title={icon.storeTitle ?? icon.label}
               url={icon.externalUrl!}
               description={icon.storeDescription ?? icon.label}
+              repoUrl={icon.repoUrl}
             />
           ),
         },

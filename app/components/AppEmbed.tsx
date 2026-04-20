@@ -1,7 +1,10 @@
+import { Github } from "lucide-react";
+
 interface AppEmbedProps {
   title: string;
   url: string;
   description: string;
+  repoUrl?: string;
 }
 
 const normalizeAppUrl = (url: string) => {
@@ -19,7 +22,7 @@ const normalizeAppUrl = (url: string) => {
   }
 };
 
-export default function AppEmbed({ title, url, description }: AppEmbedProps) {
+export default function AppEmbed({ title, url, description, repoUrl }: AppEmbedProps) {
   const resolvedUrl = normalizeAppUrl(url);
 
   return (
@@ -30,14 +33,27 @@ export default function AppEmbed({ title, url, description }: AppEmbedProps) {
             {title} | <span className="font-normal text-gray-600 dark:text-gray-400">{description}</span>
           </p>
         </div>
-        <a
-          href={resolvedUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="shrink-0 rounded border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 transition hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-300"
-        >
-          Open
-        </a>
+        <div className="flex shrink-0 items-center gap-2">
+          {repoUrl ? (
+            <a
+              href={repoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 rounded border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 transition hover:border-slate-500 hover:text-slate-950 dark:hover:text-white"
+            >
+              <Github className="h-3.5 w-3.5" />
+              Repo
+            </a>
+          ) : null}
+          <a
+            href={resolvedUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded border border-gray-300 dark:border-gray-700 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 transition hover:border-blue-400 hover:text-blue-600 dark:hover:text-blue-300"
+          >
+            Open
+          </a>
+        </div>
       </div>
       <div className="flex-1 bg-white dark:bg-gray-950">
         <iframe src={resolvedUrl} title={title} className="w-full h-full border-0" />
