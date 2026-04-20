@@ -136,7 +136,7 @@ export const portfolio = {
       description:
         "A showcase hub for Hayzer audio and visual app experiments, bringing multiple creative tools into one launch point.",
       deployedUrl: "https://hayzer.app/",
-      category: "Audio Projects",
+      category: "Web Projects",
       technologies: ["PWA", "Creative Tools", "Media Showcase"],
     },
     {
@@ -146,6 +146,14 @@ export const portfolio = {
       deployedUrl: "https://bennhub.github.io/RecFX/",
       category: "Audio Projects",
       technologies: ["React", "Audio Recording", "Effects"],
+    },
+    {
+      title: "Node Crate",
+      description:
+        "A visual sample organizer for browsing audio nodes, previewing sounds on hover, filtering collections, and exporting selected crates.",
+      deployedUrl: "https://bennhub.github.io/nodecrate/",
+      category: "Audio Projects",
+      technologies: ["Web Audio", "Sample Organizer", "Visualization"],
     },
     {
       title: "Indigenous Business Directory",
@@ -238,6 +246,13 @@ export const portfolio = {
         description:
           "A browser-based recorder with real-time effects and export tools.",
         url: "https://bennhub.github.io/RecFX/",
+      },
+      {
+        id: "app-node-crate",
+        title: "Node Crate",
+        description:
+          "A visual organizer for audio samples with hover preview, filtering, and exportable crates.",
+        url: "https://bennhub.github.io/nodecrate/",
       },
       {
         id: "app-beatloops",

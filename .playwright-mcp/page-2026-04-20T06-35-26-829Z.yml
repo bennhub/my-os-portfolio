@@ -1,0 +1,106 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - button "☰" [ref=e8] [cursor=pointer]
+        - heading "Node Crate" [level=1] [ref=e9]
+      - paragraph [ref=e10]: Browse and organize audio samples visually. Quickly preview sounds by hovering, group similar samples together, filter what you want, and export your selection.
+    - generic [ref=e13]: "Analysis: 0% Ready"
+  - generic [ref=e15]:
+    - generic [ref=e16]:
+      - button "Node Tester" [ref=e17] [cursor=pointer]
+      - button "Zoom In" [ref=e18] [cursor=pointer]
+      - button "Zoom Out" [ref=e19] [cursor=pointer]
+      - button "Reset View" [ref=e20] [cursor=pointer]
+    - generic [ref=e21]:
+      - button "Live Mode" [ref=e22] [cursor=pointer]
+      - generic [ref=e23]:
+        - text: Animation Intensity
+        - slider "Animation Intensity" [ref=e24]: "1"
+      - generic [ref=e25]:
+        - text: Color Mode
+        - combobox "Color Mode" [ref=e26]:
+          - option "Timbre" [selected]
+          - option "BPM Heat"
+          - option "Key Family"
+          - option "Energy"
+    - generic [ref=e27]: "Tip: imports auto-analyze BPM/key/genre/mood as nodes are added."
+  - main [ref=e28]:
+    - complementary [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]: Filters
+        - generic [ref=e32]:
+          - text: Search
+          - textbox "Search" [ref=e33]:
+            - /placeholder: Search samples...
+        - generic [ref=e34]:
+          - heading "Genre" [level=3] [ref=e35]
+          - generic [ref=e36]:
+            - text: Genre List
+            - combobox "Genre List" [ref=e37]:
+              - option "All" [selected]
+        - generic [ref=e38]:
+          - heading "BPM" [level=3] [ref=e39]
+          - generic [ref=e40]: 0 - max
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - text: BPM Min
+              - spinbutton "BPM Min" [ref=e43]
+            - generic [ref=e44]:
+              - text: BPM Max
+              - spinbutton "BPM Max" [ref=e45]
+        - generic [ref=e46]:
+          - heading "Key" [level=3] [ref=e47]
+          - generic [ref=e48]:
+            - text: Key List
+            - combobox "Key List" [ref=e49]:
+              - option "All" [selected]
+        - generic [ref=e50]:
+          - heading "Mood" [level=3] [ref=e51]
+          - generic [ref=e52]:
+            - text: Mood List
+            - combobox "Mood List" [ref=e53]:
+              - option "All" [selected]
+        - generic [ref=e54]:
+          - heading "Instrument" [level=3] [ref=e55]
+          - generic [ref=e56]:
+            - text: Instrument List
+            - combobox "Instrument List" [ref=e57]:
+              - option "All" [selected]
+        - button "Clear Filters" [disabled] [ref=e58]
+    - generic [ref=e61]:
+      - img "Sample node graph" [ref=e62]
+      - generic: No nodes yet. Import audio to populate the map.
+      - generic "Color mode controls node color. Node size is data-driven by layout/analyzed features and zoom level." [ref=e63]:
+        - generic [ref=e64]:
+          - generic [ref=e65]:
+            - text: Timbre
+            - generic [ref=e66]: "?"
+          - button "×" [ref=e67] [cursor=pointer]
+        - generic [ref=e69]:
+          - generic [ref=e70]: Dark / Warm
+          - generic [ref=e71]: Bright / Crisp
+        - generic [ref=e72]: "Size: data/layout based. Zoom magnifies all nodes equally."
+      - generic [ref=e73]: "Nodes: 0 / 0 • Zoom: 0.85x"
+    - complementary [ref=e74]:
+      - paragraph [ref=e76]: No sample selected.
+  - contentinfo [ref=e77]:
+    - generic [ref=e81]:
+      - generic [ref=e82]: Now Playing
+      - strong [ref=e83]: No track selected
+    - generic [ref=e84]:
+      - button "⏮" [disabled] [ref=e85]
+      - button "Play" [disabled] [ref=e86]
+      - button "⏭" [disabled] [ref=e87]
+      - button "Auto On" [disabled] [ref=e88]
+      - slider [disabled] [ref=e89]: "0"
+    - button "Crate Queue 0" [ref=e91] [cursor=pointer]:
+      - text: Crate Queue
+      - generic [ref=e92]: "0"
+  - region "Crate Queue":
+    - generic:
+      - heading "Crate Queue" [level=3]
+      - generic:
+        - button "Close"
+    - generic:
+      - generic: No crated tracks yet. Click the heart on a node to add it.

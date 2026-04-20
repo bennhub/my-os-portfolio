@@ -144,7 +144,7 @@ export const desktopAppIcons: IconDefinition[] = [
     label: 'Hayzer Apps',
     icon: <Zap className="h-5 w-5 sm:h-5 sm:w-5" />,
     badgeClassName: 'bg-amber-500 text-slate-950',
-    category: 'Audio Projects',
+    category: 'Web Projects',
     desktopFeatured: true,
     storeTitle: 'Hayzer Apps',
     storeDescription: 'A lightning-fast showcase hub for Hayzer audio and visual app experiments.',
@@ -230,6 +230,36 @@ export const desktopAppIcons: IconDefinition[] = [
     storeTitle: 'Rec FX',
     storeDescription: 'A browser recorder with live effects, exports, and shareable recordings.',
     externalUrl: 'https://bennhub.github.io/RecFX/',
+    actionLabel: 'Launch App'
+  },
+  {
+    id: 'app-node-crate',
+    label: 'Node Crate',
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="h-5 w-5 sm:h-5 sm:w-5"
+        aria-hidden="true"
+      >
+        <rect x="10" y="3.5" width="4" height="4" rx="1" />
+        <rect x="3.5" y="16.5" width="4" height="4" rx="1" />
+        <rect x="10" y="16.5" width="4" height="4" rx="1" />
+        <rect x="16.5" y="16.5" width="4" height="4" rx="1" />
+        <path d="M12 7.5v4.5" />
+        <path d="M5.5 16.5V12h13v4.5" />
+      </svg>
+    ),
+    badgeClassName: 'bg-slate-900 text-cyan-300',
+    category: 'Audio Projects',
+    desktopFeatured: true,
+    storeTitle: 'Node Crate',
+    storeDescription: 'A visual sample organizer for browsing audio nodes, previewing sounds, filtering collections, and exporting curated crates.',
+    externalUrl: 'https://bennhub.github.io/nodecrate/',
     actionLabel: 'Launch App'
   },
   {
