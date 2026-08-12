@@ -218,9 +218,9 @@ const modalTitles: Record<ModalKey, string> = {
 };
 
 const modalButtons: { key: ModalKey; label: string }[] = [
-  { key: 'resume', label: 'Work Experience' },
-  { key: 'bio', label: 'About Me' },
-  { key: 'hobbies', label: 'Hobbies' },
+  { key: 'resume', label: 'Work' },
+  { key: 'bio', label: 'About' },
+  { key: 'hobbies', label: 'Interests' },
 ];
 
 const socialLinks = [
@@ -300,7 +300,7 @@ export default function SplashPage({ onEnter }: SplashPageProps) {
               className="hidden sm:flex absolute items-center gap-3 pointer-events-none"
               style={{ left: '23%', top: '61%', transform: 'translate(-100%, -50%)' }}
             >
-              <p className="text-white text-sm font-medium leading-snug text-right max-w-[140px] text-shadow">
+              <p className="text-white text-sm font-bold leading-snug text-right max-w-[140px] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill]">
                 Click here to see projects
               </p>
               <div className="animate-bounce-x drop-shadow-[0_3px_6px_rgba(0,0,0,0.6)]">
@@ -323,22 +323,25 @@ export default function SplashPage({ onEnter }: SplashPageProps) {
               </div>
             </div>
 
-            {/* Mobile: arrow + text tucked inside the image bounds, just below the phone */}
+            {/* Mobile: arrow to the left of the phone, pointing right at it — same idea as desktop */}
             <div
-              className="sm:hidden absolute flex flex-col items-center gap-0.5 pointer-events-none"
-              style={{ left: '35.5%', top: '80%', transform: 'translateX(-50%)' }}
+              className="sm:hidden absolute flex items-center gap-1.5 pointer-events-none"
+              style={{ left: '23%', top: '61%', transform: 'translate(-100%, -50%)' }}
             >
-              <div className="animate-bounce drop-shadow-[0_3px_6px_rgba(0,0,0,0.6)]">
-                <svg width="16" height="22" viewBox="0 0 20 28" fill="none" aria-hidden="true">
+              <p className="text-white text-xs font-bold leading-snug text-right max-w-[82px] [-webkit-text-stroke:2px_black] [paint-order:stroke_fill]">
+                Click here to see projects
+              </p>
+              <div className="animate-bounce-x drop-shadow-[0_3px_6px_rgba(0,0,0,0.6)]">
+                <svg width="28" height="12" viewBox="0 0 52 22" fill="none" aria-hidden="true">
                   <path
-                    d="M10 2V26M10 2L4 10M10 2L16 10"
+                    d="M4 11H50M50 11L38 4M50 11L38 18"
                     stroke="black"
                     strokeWidth="4.4"
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   />
                   <path
-                    d="M10 2V26M10 2L4 10M10 2L16 10"
+                    d="M4 11H50M50 11L38 4M50 11L38 18"
                     stroke="#FFE066"
                     strokeWidth="2.2"
                     strokeLinecap="round"
@@ -346,9 +349,6 @@ export default function SplashPage({ onEnter }: SplashPageProps) {
                   />
                 </svg>
               </div>
-              <p className="text-white text-[10px] font-medium whitespace-nowrap text-shadow">
-                Click here to see projects
-              </p>
             </div>
           </div>
 
