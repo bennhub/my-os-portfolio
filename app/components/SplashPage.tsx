@@ -106,16 +106,17 @@ function BioContent() {
 
       {/* Links — placeholders for now */}
       <div className="space-y-2 pt-3 border-t border-white/10">
+        {/* TODO: add real links, then remove `hidden` */}
         <a
           href="#"
-          className="flex items-center gap-2 text-sm text-white/70 hover:text-[#4FB8A6] transition-colors duration-150"
+          className="hidden items-center gap-2 text-sm text-white/70 hover:text-[#4FB8A6] transition-colors duration-150"
         >
           <Link2 className="w-3.5 h-3.5 text-[#4FB8A6] flex-shrink-0" />
           yourlink.com (placeholder)
         </a>
         <a
           href="#"
-          className="flex items-center gap-2 text-sm text-white/70 hover:text-[#4FB8A6] transition-colors duration-150"
+          className="hidden items-center gap-2 text-sm text-white/70 hover:text-[#4FB8A6] transition-colors duration-150"
         >
           <Link2 className="w-3.5 h-3.5 text-[#4FB8A6] flex-shrink-0" />
           yourlink.com (placeholder)
