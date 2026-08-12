@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local session notes, not for the public repo
+/project-memory
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

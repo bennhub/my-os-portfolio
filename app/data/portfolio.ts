@@ -13,9 +13,10 @@ export const portfolio = {
   qaPortfolioUrl: "https://github.com/bennhub/GitHub-QA-Portfolio",
   bandcampUrl: "https://b-hayes.bandcamp.com/album/b-hayes-beats-pt-3?from=embed",
   contactNote: "Reach out via LinkedIn, GitHub, or the live portfolio.",
+  splashBioVideoUrl: "", // set to a YouTube embed URL (e.g. https://www.youtube.com/embed/VIDEO_ID) when ready
   yearsExperience: "10+",
   heroBlurb:
-    "Crafting quality software by day, creating beats and capturing moments by night. Where technology meets creativity.",
+    "Logic will get you from A to B. Imagination will take you everywhere.",
   about: [
     "I am a QA engineer who enjoys digging into how products behave, where they break, and how to make them better. Outside of my testing work, I like vibe coding, building front-end experiments, and utilizing AI to explore ideas faster and turn rough concepts into something real.",
     "A lot of my personal work lives at the intersection of technology and creativity. I spend time making music, creating digital projects, and following whatever interesting idea pulls me in next. I also value getting away from the screen through outdoor activities like hiking, camping, and exploring new places.",
@@ -23,11 +24,17 @@ export const portfolio = {
   funFact:
     "I escape the city by spending time on a little piece of land I bought on the Gulf Islands.",
   hobbies: [
-    "Photography",
-    "Music creation",
     "Camping",
+    "Exploring the outdoors",
+    "Wood working",
     "Coding",
-    "Exploring new areas",
+    "Travelling",
+    "Skiing",
+    "Boating",
+    "DIY projects",
+    "Mountain biking",
+    "Playing guitar",
+    "Digital art",
   ],
   experienceOverview:
     "I'm a QA engineer with over 10 years of experience testing web and mobile applications. I enjoy finding weak spots, understanding why they happen, and working closely with teams to improve the product before those issues reach users. My background spans functional, automated, and performance testing, along with building test strategies and frameworks that help teams focus on the problems that matter most.",

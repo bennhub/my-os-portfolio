@@ -18,6 +18,7 @@ import AutomationLab from "./components/AutomationLab";
 import MediaShowcase from "./components/MediaShowcase";
 import AppEmbed from "./components/AppEmbed";
 import WelcomeOverlay from "./components/WelcomeOverlay";
+import SplashPage from "./components/SplashPage";
 import { portfolio } from "./data/portfolio";
 import { iconRegistry, mobileDockDefaultIds, mobileIconOrder } from "./data/iconRegistry";
 import wallpaper from "@/public/wallpaper1.png";
@@ -63,6 +64,7 @@ export default function Home() {
   const [windowPositions, setWindowPositions] = useState<Record<string, { bottom: number; width: number; height: number }>>({});
   const [isDockHidden, setIsDockHidden] = useState(false);
   const [isDockOverridden, setIsDockOverridden] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
   const [showWelcomeOverlay, setShowWelcomeOverlay] = useState(false);
 
   // Wallpapers are managed via WallpaperSelector; stored wallpaper src in state and localStorage
@@ -459,11 +461,12 @@ export default function Home() {
 
   return (
     <ThemeProvider>
+      {showSplash && <SplashPage onEnter={() => setShowSplash(false)} />}
       <div
         className="relative min-h-screen min-w-full overflow-hidden bg-cover bg-center bg-no-repeat text-black transition-colors duration-300 dark:text-white"
         style={{ backgroundImage: `url(${wallpaper1})` }}
       >
-        <MenuBar switchWallpaper={switchWallpaper} />
+        <MenuBar switchWallpaper={switchWallpaper} onBackToHome={() => setShowSplash(true)} />
         <Desktop
           openWindow={openWindow}
           hasOpenWindows={openWindows.length > 0}
@@ -543,7 +546,7 @@ export default function Home() {
           </div>
         ) : null}
 
-        {showWelcomeOverlay ? <WelcomeOverlay onClose={dismissWelcomeOverlay} /> : null}
+        {showWelcomeOverlay && !showSplash ? <WelcomeOverlay onClose={dismissWelcomeOverlay} /> : null}
       </div>
     </ThemeProvider>
   );

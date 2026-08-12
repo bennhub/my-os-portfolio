@@ -12,6 +12,7 @@ import {
   Minimize2,
   LucideCopyright,
   ChevronDown,
+  ArrowLeft,
   X
 } from "lucide-react"; // Import close icon
 import { useTheme } from "../contexts/ThemeContext";
@@ -26,9 +27,10 @@ interface ThemeContextType {
 }
 interface MenuBarProps {
   switchWallpaper: (wallpaperSrc: string) => void; // Define the prop type
+  onBackToHome: () => void;
 }
 
-const MenuBar: React.FC<MenuBarProps> = ({ switchWallpaper }) => {
+const MenuBar: React.FC<MenuBarProps> = ({ switchWallpaper, onBackToHome }) => {
   const { theme, toggleTheme } = useTheme() as ThemeContextType;
   const [dateTime, setDateTime] = useState<Date>(new Date());
   const batteryStatus = useBatteryStatus();
@@ -129,10 +131,17 @@ const MenuBar: React.FC<MenuBarProps> = ({ switchWallpaper }) => {
         } z-50 flex items-center justify-between px-3 sm:px-4 backdrop-blur-xl transition-colors duration-300`}
       >
         <div className="flex items-center space-x-1.5 sm:space-x-2">
-          <span className="hidden text-xs sm:text-sm md:block">{portfolio.name}</span>
-          <span className="text-sm md:hidden">{portfolio.shortName}</span>
-          <LucideCopyright className="h-4 w-4 font-thin sm:h-4 sm:w-4"/>
-          <span className="text-sm sm:text-sm">2026</span>
+          <button
+            onClick={onBackToHome}
+            aria-label="Back to home"
+            className="flex items-center gap-1 rounded-full px-2 py-1 -ml-2 transition-colors hover:bg-gray-200/50 dark:hover:bg-black/25"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span className="text-xs sm:text-sm">Back to Home</span>
+          </button>
+          <span className="hidden text-xs sm:text-sm lg:block">{portfolio.name}</span>
+          <LucideCopyright className="hidden h-4 w-4 font-thin sm:h-4 sm:w-4 lg:block"/>
+          <span className="hidden text-sm sm:text-sm lg:block">2026</span>
         </div>
         
         <div className="flex items-center space-x-1.5 sm:space-x-2">
